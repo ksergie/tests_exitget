@@ -12,12 +12,6 @@ import static java.lang.System.setProperty;
 @ExtendWith(SeleniumExtension.class)
 public class LoginPageTest {
 
-    private WebDriver driver;
-
-    public LoginPageTest(WebDriver driver) {
-        this.driver = driver;
-    }
-
     private MainPage mainPage;
     private LoginPage loginPage;
     private OverviewPage overviewPage;
@@ -29,7 +23,7 @@ public class LoginPageTest {
 
     @TestTemplate
     @DisplayName("Login page. Login with correct data")
-    void testLoginWithCorrectData(){
+    void testLoginWithCorrectData(WebDriver driver){
 
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
@@ -44,7 +38,7 @@ public class LoginPageTest {
 
     @TestTemplate
     @DisplayName("Login page. Login without data")
-    void testLoginWithoutData() {
+    void testLoginWithoutData(WebDriver driver) {
 
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
@@ -58,7 +52,7 @@ public class LoginPageTest {
 
     @TestTemplate
     @DisplayName("Login page. Login without password")
-    void loginWithoutPasswd() {
+    void loginWithoutPasswd(WebDriver driver) {
 
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
@@ -72,7 +66,7 @@ public class LoginPageTest {
 
     @TestTemplate
     @DisplayName("Login page. Login with incorrect email")
-    void loginWithIncorrectEmail(){
+    void loginWithIncorrectEmail(WebDriver driver){
 
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
@@ -86,7 +80,7 @@ public class LoginPageTest {
 
     @TestTemplate
     @DisplayName("Login page. Login with correct email and incorrect password")
-    void loginWithCorrectEmailIncorrectPasswd(){
+    void loginWithCorrectEmailIncorrectPasswd(WebDriver driver){
 
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
@@ -100,7 +94,7 @@ public class LoginPageTest {
 
     @TestTemplate
     @DisplayName("Login page. Login with unregistered email")
-    void loginWithUnregisteredEmail(){
+    void loginWithUnregisteredEmail(WebDriver driver){
 
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
