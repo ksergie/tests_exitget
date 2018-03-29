@@ -52,6 +52,12 @@
             <version>3.11.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.safaribooks</groupId>
+            <artifactId>jenkins-helper-java</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
