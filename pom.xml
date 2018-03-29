@@ -52,6 +52,11 @@
             <version>3.11.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.automation-remarks</groupId>
+            <artifactId>video-recorder-junit</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 
 </project>
