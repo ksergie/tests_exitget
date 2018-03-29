@@ -24,6 +24,7 @@ public class LoginPageTest {
     }
 
     @TestTemplate
+    @Video
     @DisplayName("Login page. Login with correct data")
     void testLoginWithCorrectData(WebDriver driver){
 
