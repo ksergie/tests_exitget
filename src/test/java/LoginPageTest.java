@@ -24,7 +24,6 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
     @DisplayName("Login page. Login with correct data")
     void testLoginWithCorrectData(WebDriver driver){
 
@@ -39,7 +38,6 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
     @DisplayName("Login page. Login without data")
     void testLoginWithoutData(WebDriver driver) {
 
@@ -53,7 +51,6 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
     @DisplayName("Login page. Login without password")
     void loginWithoutPasswd(WebDriver driver) {
 
@@ -67,7 +64,6 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
     @DisplayName("Login page. Login with incorrect email")
     void loginWithIncorrectEmail(WebDriver driver){
 
@@ -81,7 +77,6 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
     @DisplayName("Login page. Login with correct email and incorrect password")
     void loginWithCorrectEmailIncorrectPasswd(WebDriver driver){
 
@@ -95,7 +90,6 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
     @DisplayName("Login page. Login with unregistered email")
     void loginWithUnregisteredEmail(WebDriver driver){
 
