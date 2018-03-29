@@ -1,10 +1,12 @@
 import io.github.bonigarcia.SeleniumExtension;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
+import static java.lang.System.setProperty;
 
 
 @ExtendWith(SeleniumExtension.class)
@@ -19,6 +21,11 @@ public class LoginPageTest {
     private MainPage mainPage;
     private LoginPage loginPage;
     private OverviewPage overviewPage;
+
+    @BeforeAll
+    static void setup() {
+        setProperty("wdm.edgeVersion", "3.14393");
+    }
 
     @TestTemplate
     @DisplayName("Login page. Login with correct data")
