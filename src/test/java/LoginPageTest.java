@@ -10,6 +10,7 @@ import static java.lang.System.setProperty;
 
 
 @ExtendWith(SeleniumExtension.class)
+@DisplayName("Login page test")
 public class LoginPageTest {
 
     private MainPage mainPage;
@@ -29,7 +30,6 @@ public class LoginPageTest {
         loginPage = new LoginPage(driver);
         overviewPage = new OverviewPage(driver);
 
-        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest@gmail.com", "20exitget17");
@@ -43,7 +43,6 @@ public class LoginPageTest {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
 
-        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("", "");
@@ -57,7 +56,6 @@ public class LoginPageTest {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
 
-        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest@gmail.com", "");
@@ -71,7 +69,6 @@ public class LoginPageTest {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
 
-        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("123qwer", "20exitget17");
@@ -85,7 +82,6 @@ public class LoginPageTest {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
 
-        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest@gmail.com", "20exitget20");
@@ -99,7 +95,6 @@ public class LoginPageTest {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
 
-        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest999999@gmail.com", "20exitget17");
