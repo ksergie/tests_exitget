@@ -20,10 +20,10 @@ public class QuickStartGuidePageTest {
     private AccountPage accountPage;
     private AlertPage alertPage;
 
-//    @BeforeAll
-//    static void setup() {
-//        setProperty("wdm.edgeVersion", "3.14393");
-//    }
+    @BeforeAll
+    static void setup() {
+        setProperty("wdm.edgeVersion", "3.14393");
+    }
 
     @TestTemplate
     @DisplayName("QuickStartGuide page. Test")
@@ -77,7 +77,7 @@ public class QuickStartGuidePageTest {
 
         quickStartGuidePage.clickTriggetTypeNextButton();
         Assertions.assertEquals("Final step: Confirm installation", quickStartGuidePage.getConfirmInstallationHeader(), "FAULT - We are not on the Confirm installation form");
-        
+
 
     }
 
