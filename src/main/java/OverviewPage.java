@@ -14,9 +14,19 @@ public class OverviewPage {
         this.driver = driver;
     }
 
-    private By header_link = By.id("header_links");
+    private By header_link = By.xpath("(//div[@id='stats_highlight']//div[@class='helptext'])[1]");
+    private By quickstart_sub_item = By.xpath("//a[@class='dashboard_quickstart sub_item']");
+    private By accountButton = By.id("accountButton");
 
     public String getHeader() {
         return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(header_link)).getText());
+    }
+
+    public void clickQuickstartItem(){
+        driver.findElement(quickstart_sub_item).click();
+    }
+
+    public void clickAccountButton(){
+        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(accountButton)).click();
     }
 }

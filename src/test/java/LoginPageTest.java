@@ -35,7 +35,7 @@ public class LoginPageTest {
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest@gmail.com", "20exitget17");
-        Assertions.assertEquals("exitgettest", overviewPage.getHeader(), "FAULT - We are not login the ExitGet");
+        Assertions.assertEquals("VISITATIONS", overviewPage.getHeader(), "FAULT - We are not on the Overview page");
     }
 
     @TestTemplate
