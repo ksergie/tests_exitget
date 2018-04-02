@@ -21,7 +21,6 @@ public class QuickStartGuidePageTest {
     @BeforeAll
     static void setup() {
         setProperty("wdm.edgeVersion", "3.14393");
-        setProperty("jenkins_url", "http://74.118.138.126:8080/job/ExitGet%20tests");
     }
 
     @Disabled
