@@ -1,3 +1,4 @@
+import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,6 +27,7 @@ public class QuickStartGuidePageTest {
     }
 
     @TestTemplate
+    @Video
     @DisplayName("QuickStartGuide page. Test")
     void testQuickStartGuide(WebDriver driver){
 
