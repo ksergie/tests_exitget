@@ -21,6 +21,7 @@ public class QuickStartGuidePageTest {
     @BeforeAll
     static void setup() {
         setProperty("wdm.edgeVersion", "3.14393");
+        System.setProperty("sel.jup.recording", "true");
     }
 
     @Disabled
