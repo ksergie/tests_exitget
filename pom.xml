@@ -18,7 +18,6 @@
         <junit-jupiter-engine.version>5.1.0</junit-jupiter-engine.version>
         <selenium-java.version>3.11.0</selenium-java.version>
         <selenium-jupiter.version>2.0.0</selenium-jupiter.version>
-        <video-recorder-junit5.version>1.6</video-recorder-junit5.version>
     </properties>
 
     <build>
@@ -113,7 +112,7 @@
         <dependency>
             <groupId>com.automation-remarks</groupId>
             <artifactId>video-recorder-junit5</artifactId>
-            <version>${video-recorder-junit5.version}</version>
+            <version>LATEST</version>
         </dependency>
     </dependencies>
 
