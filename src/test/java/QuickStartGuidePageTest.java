@@ -22,7 +22,7 @@ public class QuickStartGuidePageTest {
     static void setup() {
         setProperty("wdm.edgeVersion", "3.14393");
     }
-    @Disabled
+
     @TestTemplate
     @Video
     @DisplayName("QuickStartGuide page. Test")

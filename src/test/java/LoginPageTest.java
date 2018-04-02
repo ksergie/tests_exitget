@@ -34,7 +34,7 @@ public class LoginPageTest {
         loginPage.login("exitgetest@gmail.com", "20exitget17");
         Assertions.assertEquals("VISITATIONS", overviewPage.getHeader(), "FAULT - We are not on the Overview page");
     }
-    @Disabled
+    
     @TestTemplate
     @Video
     @DisplayName("Login page. Login without data")
@@ -48,7 +48,7 @@ public class LoginPageTest {
         loginPage.login("", "");
         Assertions.assertEquals("You must provide the email address you registered with.", loginPage.getTooltip(), "FAULT - Tooltip is not correspond the user's input");
     }
-    @Disabled
+
     @TestTemplate
     @Video
     @DisplayName("Login page. Login without password")
@@ -62,7 +62,7 @@ public class LoginPageTest {
         loginPage.login("exitgetest@gmail.com", "");
         Assertions.assertEquals("You must provide a password to login.", loginPage.getTooltip(), "FAULT - Tooltip is not correspond the user's input");
     }
-    @Disabled
+
     @TestTemplate
     @Video
     @DisplayName("Login page. Login with incorrect email")
@@ -76,7 +76,7 @@ public class LoginPageTest {
         loginPage.login("123qwer", "20exitget17");
         Assertions.assertEquals("You must provide a valid email address.", loginPage.getTooltip(), "FAULT - Tooltip is not correspond the user's input");
     }
-    @Disabled
+
     @TestTemplate
     @Video
     @DisplayName("Login page. Login with correct email and incorrect password")
@@ -90,7 +90,7 @@ public class LoginPageTest {
         loginPage.login("exitgetest@gmail.com", "20exitget20");
         Assertions.assertEquals("The login information you provided was not correct.", loginPage.getTooltip(), "FAULT - Tooltip is not correspond the user's input");
     }
-    @Disabled
+
     @TestTemplate
     @Video
     @DisplayName("Login page. Login with unregistered email")
