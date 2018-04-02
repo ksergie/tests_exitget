@@ -1,9 +1,6 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.TestTemplate;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +22,7 @@ public class QuickStartGuidePageTest {
     static void setup() {
         setProperty("wdm.edgeVersion", "3.14393");
     }
-
+    @Disabled
     @TestTemplate
     @Video
     @DisplayName("QuickStartGuide page. Test")
