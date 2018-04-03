@@ -17,7 +17,7 @@ public class LoginPageTest {
     private OverviewPage overviewPage;
 
     @BeforeAll
-    static void setUp(WebDriver driver) {
+    static void setUp() {
         setProperty("wdm.edgeVersion", "3.14393");
     }
 

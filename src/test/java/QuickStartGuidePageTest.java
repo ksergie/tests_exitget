@@ -19,9 +19,8 @@ public class QuickStartGuidePageTest {
     private AlertPage alertPage;
 
     @BeforeAll
-    static void setup() {
+    static void setUp() {
         setProperty("wdm.edgeVersion", "3.14393");
-
     }
 
     @TestTemplate
