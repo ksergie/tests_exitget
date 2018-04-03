@@ -27,7 +27,7 @@ public class LoginPageTest {
     void testLoginWithCorrectData(WebDriver driver){
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest@gmail.com", "20exitget17");
@@ -41,7 +41,7 @@ public class LoginPageTest {
     void testLoginWithoutData(WebDriver driver) {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("", "");
@@ -54,7 +54,7 @@ public class LoginPageTest {
     void loginWithoutPasswd(WebDriver driver) {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest@gmail.com", "");
@@ -67,7 +67,7 @@ public class LoginPageTest {
     void loginWithIncorrectEmail(WebDriver driver){
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("123qwer", "20exitget17");
@@ -80,7 +80,7 @@ public class LoginPageTest {
     void loginWithCorrectEmailIncorrectPasswd(WebDriver driver){
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest@gmail.com", "20exitget20");
@@ -93,7 +93,7 @@ public class LoginPageTest {
     void loginWithUnregisteredEmail(WebDriver driver){
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest999999@gmail.com", "20exitget17");
