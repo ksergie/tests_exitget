@@ -15,10 +15,10 @@ public class LoginPageTest {
     private LoginPage loginPage;
     private OverviewPage overviewPage;
 
-    @BeforeAll
-    static void setup() {
-        setProperty("wdm.edgeVersion", "3.14393");
-    }
+//    @BeforeAll
+//    static void setup() {
+//        setProperty("wdm.edgeVersion", "3.14393");
+//    }
 
     @TestTemplate
     @Video
