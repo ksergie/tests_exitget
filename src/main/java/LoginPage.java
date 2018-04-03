@@ -18,19 +18,19 @@ public class LoginPage {
     private By toolTip = By.xpath("//div[@id='login_frame']//div[@class='_logicstatus']");
 
     private LoginPage inputEmail(String email){
-        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(fieldEmail)).sendKeys(email);
+        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(fieldEmail)).sendKeys(email);
         return this;
     }
 
     private LoginPage inputPassword(String passwd){
-        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(fieldPassword)).sendKeys(passwd);
+        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(fieldPassword)).sendKeys(passwd);
         return this;
     }
 
     public void login(String email, String passwd){
         inputEmail(email);
         inputPassword(passwd);
-        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(buttonLogin)).submit();
+        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(buttonLogin)).submit();
     }
 
     public String getTooltip() {
