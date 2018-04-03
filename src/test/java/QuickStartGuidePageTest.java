@@ -25,7 +25,7 @@ public class QuickStartGuidePageTest {
     }
 
     @TestTemplate
-    @Video
+    @Video(name = "QuickStartGuide page. Test")
     @DisplayName("QuickStartGuide page. Test")
     void testQuickStartGuide(WebDriver driver){
 

@@ -11,12 +11,12 @@ import static java.lang.System.setProperty;
 @DisplayName("Login page test")
 public class LoginPageTest {
 
-    private MainPage mainPage;
-    private LoginPage loginPage;
+    static private MainPage mainPage;
+    static private LoginPage loginPage;
     private OverviewPage overviewPage;
 
     @BeforeAll
-    void setup(WebDriver driver) {
+    static void setup(WebDriver driver) {
         setProperty("wdm.edgeVersion", "3.14393");
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
@@ -26,7 +26,7 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
+    @Video(name = "Login page. Login with correct data")
     @DisplayName("Login page. Login with correct data")
     void testLoginWithCorrectData(WebDriver driver){
         loginPage.login("exitgetest@gmail.com", "20exitget17");
@@ -35,7 +35,7 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
+    @Video(name = "Login page. Login without data")
     @DisplayName("Login page. Login without data")
     void testLoginWithoutData(WebDriver driver) {
         loginPage.login("", "");
@@ -43,7 +43,7 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
+    @Video(name = "Login page. Login without password")
     @DisplayName("Login page. Login without password")
     void loginWithoutPasswd(WebDriver driver) {
         loginPage.login("exitgetest@gmail.com", "");
@@ -51,7 +51,7 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
+    @Video(name = "Login page. Login with incorrect email")
     @DisplayName("Login page. Login with incorrect email")
     void loginWithIncorrectEmail(WebDriver driver){
         loginPage.login("123qwer", "20exitget17");
@@ -59,7 +59,7 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
+    @Video(name = "Login page. Login with correct email and incorrect password")
     @DisplayName("Login page. Login with correct email and incorrect password")
     void loginWithCorrectEmailIncorrectPasswd(WebDriver driver){
         loginPage.login("exitgetest@gmail.com", "20exitget20");
@@ -67,7 +67,7 @@ public class LoginPageTest {
     }
 
     @TestTemplate
-    @Video
+    @Video(name = "Login page. Login with unregistered email")
     @DisplayName("Login page. Login with unregistered email")
     void loginWithUnregisteredEmail(WebDriver driver){
         loginPage.login("exitgetest999999@gmail.com", "20exitget17");
