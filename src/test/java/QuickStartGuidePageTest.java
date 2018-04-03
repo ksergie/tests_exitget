@@ -21,6 +21,7 @@ public class QuickStartGuidePageTest {
     @BeforeAll
     static void setup() {
         setProperty("wdm.edgeVersion", "3.14393");
+
     }
 
     @TestTemplate
@@ -35,7 +36,7 @@ public class QuickStartGuidePageTest {
         accountPage = new AccountPage(driver);
         alertPage = new AlertPage(driver);
 
-
+        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
         loginPage.login("exitgetest@gmail.com", "20exitget17");
