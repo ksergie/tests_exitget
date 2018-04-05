@@ -17,9 +17,14 @@ public class OverviewPage {
     private By header_link = By.xpath("(//div[@id='stats_highlight']//div[@class='helptext'])[1]");
     private By quickstart_sub_item = By.xpath("//a[@class='dashboard_quickstart sub_item']");
     private By accountButton = By.id("accountButton");
+    private By userNameString = By.id("header_links");
 
     public String getHeader() {
         return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(header_link)).getText());
+    }
+
+    public String getUserNameString() {
+        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(userNameString)).getText());
     }
 
     public void clickQuickstartItem(){

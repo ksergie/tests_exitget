@@ -30,6 +30,7 @@ public class LoginPageTest {
 //        driver.manage().window().maximize();
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
+        // Need to add an assertion
         loginPage.login("exitgetest@gmail.com", "20exitget17");
         overviewPage = new OverviewPage(driver);
         Assertions.assertEquals("VISITATIONS", overviewPage.getHeader(), "FAULT - We are not on the Overview page");
