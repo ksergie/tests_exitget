@@ -17,7 +17,6 @@ import static java.lang.System.setProperty;
 public class RegistrationPageTest {
 
     private String userName;
-    private String browserName;
     private RegistrationPage registrationPage;
     private MainPage mainPage;
     private OverviewPage overviewPage;
@@ -26,13 +25,6 @@ public class RegistrationPageTest {
     static void setUp() {
         setProperty("wdm.edgeVersion", "3.14393");
     }
-
-//    @BeforeEach
-//    void getBrowser(WebDriver driver){
-//        String fullBrowserName = driver.toString();
-//        browserName = getShortBrowserName(fullBrowserName);
-//        System.out.println(browserName);
-//    }
 
     @TestTemplate
     @Video(name = "Registration page. Registration with correct data")
@@ -55,9 +47,5 @@ public String getUserName(){
     return userName = "tester" + dat;
 }
 
-//    private String getShortBrowserName(String fullName) {
-//        String [] parts = fullName.split(":");
-//        return parts[0];
-//    }
 }
 
