@@ -20,11 +20,11 @@ public class OverviewPage {
     private By userNameString = By.id("header_links");
 
     public String getHeader() {
-        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(header_link)).getText());
+        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header_link)).getText());
     }
 
     public String getUserNameString() {
-        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(userNameString)).getText());
+        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(userNameString)).getText());
     }
 
     public void clickQuickstartItem(){

@@ -16,6 +16,11 @@ public class LoginPage {
     private By fieldPassword = By.id("login_password");
     private By buttonLogin = By.xpath("//button[@origtext='Login']");
     private By toolTip = By.xpath("//div[@id='login_frame']//div[@class='_logicstatus']");
+    private By header = By.xpath("//div[@id='login_frame']//div[@class='contentlabel font_size_by_height']");
+
+    public String getHeader(){
+        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+    }
 
     private LoginPage inputEmail(String email){
         (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(fieldEmail)).sendKeys(email);

@@ -3,6 +3,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static jdk.nashorn.internal.objects.NativeString.trim;
+
 public class RegistrationPage {
     private WebDriver driver;
 
@@ -10,11 +12,16 @@ public class RegistrationPage {
         this.driver = driver;
     }
 
+    private By header = By.xpath("//div[@id='register_frame']//div[@class='contentlabel font_size_by_height']");
     private By registerNameField = By.id("registername");
     private By registereMailField = By.id("registeremail");
     private By registerPasswdField = By.id("registerpass");
     private By legalCheckbox = By.id("legalCheckbox");
     private By registerButton = By.xpath("//button[@origtext='Register']");
+
+    public String getHeader(){
+        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+    }
 
     private RegistrationPage inputName(String userName){
         (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(registerNameField)).sendKeys(userName);

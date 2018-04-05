@@ -1,9 +1,6 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.TestTemplate;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
@@ -12,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import static java.lang.System.getProperty;
 import static java.lang.System.setProperty;
 
 @ExtendWith(SeleniumExtension.class)
@@ -19,6 +17,7 @@ import static java.lang.System.setProperty;
 public class RegistrationPageTest {
 
     private String userName;
+    private String browserName;
     private RegistrationPage registrationPage;
     private MainPage mainPage;
     private OverviewPage overviewPage;
@@ -26,6 +25,13 @@ public class RegistrationPageTest {
     @BeforeAll
     static void setUp() {
         setProperty("wdm.edgeVersion", "3.14393");
+    }
+
+    @BeforeEach
+    void getBrowser(WebDriver driver){
+        String fullBrowserName = driver.toString();
+        browserName = getShortBrowserName(fullBrowserName);
+        System.out.println(browserName);
     }
 
     @TestTemplate
@@ -36,6 +42,7 @@ public class RegistrationPageTest {
         registrationPage = new RegistrationPage(driver);
         driver.get("https://exitget.com");
         mainPage.clickTopImageRegisterButton();
+        Assertions.assertEquals("Registration", registrationPage.getHeader(), "FAULT - We are not on the Registration page");
         registrationPage.register(getUserName(), userName + "@gmai.com", "20exitget18");
         overviewPage = new OverviewPage(driver);
         Assertions.assertEquals(userName, overviewPage.getUserNameString(), "FAULT - We are not on the Overview page");
@@ -47,5 +54,10 @@ public String getUserName(){
     String dat = df.format(today);
     return userName = "tester" + dat;
 }
+
+    private String getShortBrowserName(String fullName) {
+        String [] parts = fullName.split(":");
+        return parts[0];
+    }
 }
 
