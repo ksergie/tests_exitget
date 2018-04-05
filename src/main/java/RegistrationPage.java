@@ -20,31 +20,31 @@ public class RegistrationPage {
     private By registerButton = By.xpath("//button[@origtext='Register']");
 
     public String getHeader(){
-        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
     }
 
     private RegistrationPage inputName(String userName){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(registerNameField)).sendKeys(userName);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerNameField)).sendKeys(userName);
         return this;
     }
 
     private RegistrationPage inputEMail(String email){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(registereMailField)).sendKeys(email);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registereMailField)).sendKeys(email);
         return this;
     }
 
     private RegistrationPage inputPassword(String passwd){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(registerPasswdField)).sendKeys(passwd);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerPasswdField)).sendKeys(passwd);
         return this;
     }
 
     private RegistrationPage tickCheckBox() {
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(legalCheckbox)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(legalCheckbox)).click();
         return this;
     }
 
     private RegistrationPage clickRegisterButton(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(registerButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerButton)).click();
         return this;
     }
 

@@ -14,9 +14,9 @@ public class MainPage {
     private By topImageRegisterButton = By.id("topImageRegister");
 
     public void clickHeaderLoginButton() {
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(headerLoginButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(headerLoginButton)).click();
     }
     public void clickTopImageRegisterButton(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
     }
 }

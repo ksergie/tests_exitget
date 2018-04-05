@@ -35,70 +35,70 @@ public class QuickStartGuidePage {
     private By confirmInstallationHeader = By.xpath("//div[@id='testInstallation']//span[@class='webAddress']");
 
     public String getHeader(){
-        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(headerPage)).getText());
+        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(headerPage)).getText());
     }
 
     public QuickStartGuidePage setInslallUrl(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(installUrlField)).sendKeys(targetSiteUrl);
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(installUrlNextButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(installUrlField)).sendKeys(targetSiteUrl);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(installUrlNextButton)).click();
         return this;
     }
 
     public String getDevModeFormHeader() {
-        return (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(devModeFormHeader)).getText();
+        return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(devModeFormHeader)).getText();
     }
 
     public QuickStartGuidePage setDevMode(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(devModeSwitch)).click();
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(devModeFormNextButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(devModeSwitch)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(devModeFormNextButton)).click();
         return this;
     }
 
     public String getChooseImageFormHeader(){
-        return (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(chooseImageFormHeader)).getText();
+        return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(chooseImageFormHeader)).getText();
     }
 
     public QuickStartGuidePage setTemplate(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(filterAdvertisementsSelector)).click();
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(redirectOnlyOption)).click();
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(template)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(redirectOnlyOption)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(template)).click();
         return this;
     }
 
     public String getcustomizeDesignFormHeader(){
-        return (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(customizeDesignHeader)).getText();
+        return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(customizeDesignHeader)).getText();
     }
 
     public QuickStartGuidePage clickPreviewButton(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(previewButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(previewButton)).click();
         return this;
     }
 
     public QuickStartGuidePage clickNextButton(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(nextButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(nextButton)).click();
         return this;
     }
 
     public String getInputRedirectionUrlHeader(){
-        return (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(inputRedirectionUrlHeader)).getText();
+        return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(inputRedirectionUrlHeader)).getText();
     }
 
     public QuickStartGuidePage inputRedirectionUrl(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(redirectionUrlField)).sendKeys("https://exitget.com");
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(redirectUrlNextButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(redirectionUrlField)).sendKeys("https://exitget.com");
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(redirectUrlNextButton)).click();
         return this;
     }
 
     public String getTriggerTypeHeader(){
-        return (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(triggerTypeHeader)).getText();
+        return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(triggerTypeHeader)).getText();
     }
 
     public QuickStartGuidePage clickTriggetTypeNextButton(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(triggerTypeNextButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(triggerTypeNextButton)).click();
         return this;
     }
 
     public String getConfirmInstallationHeader(){
-        return (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(confirmInstallationHeader)).getText();
+        return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(confirmInstallationHeader)).getText();
     }
 }

@@ -19,26 +19,26 @@ public class LoginPage {
     private By header = By.xpath("//div[@id='login_frame']//div[@class='contentlabel font_size_by_height']");
 
     public String getHeader(){
-        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
     }
 
     private LoginPage inputEmail(String email){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(fieldEmail)).sendKeys(email);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(fieldEmail)).sendKeys(email);
         return this;
     }
 
     private LoginPage inputPassword(String passwd){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(fieldPassword)).sendKeys(passwd);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(fieldPassword)).sendKeys(passwd);
         return this;
     }
 
     public void login(String email, String passwd){
         inputEmail(email);
         inputPassword(passwd);
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(buttonLogin)).submit();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(buttonLogin)).submit();
     }
 
     public String getTooltip() {
-        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(toolTip)).getText());
+        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(toolTip)).getText());
     }
 }

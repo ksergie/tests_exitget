@@ -32,6 +32,6 @@ public class OverviewPage {
     }
 
     public void clickAccountButton(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(accountButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(accountButton)).click();
     }
 }

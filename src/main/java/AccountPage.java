@@ -19,16 +19,16 @@ public class AccountPage {
 
 
     public String getHeaderPage(){
-        return (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(headerPage)).getText();
+        return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(headerPage)).getText();
     }
 
     public AccountPage inputCurrentPassword(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(inputCurrentPasswordField)).sendKeys("20exitget17");
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(inputCurrentPasswordField)).sendKeys("20exitget17");
         return this;
     }
 
     public AccountPage clickResetAccountButton(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(resetAccountButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(resetAccountButton)).click();
         return this;
     }
 
@@ -38,10 +38,10 @@ public class AccountPage {
     }
 
     public String getAccountResultMessage(){
-        return (new WebDriverWait(driver, 10)).until(ExpectedConditions.textToBe(accountResultMessage, "Reset complete")).toString();
+        return (new WebDriverWait(driver, 20)).until(ExpectedConditions.textToBe(accountResultMessage, "Reset complete")).toString();
     }
 
     public void clickCloseButton(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(closeButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(closeButton)).click();
     }
 }
