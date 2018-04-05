@@ -8,17 +8,17 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
 import java.text.DateFormat;
-import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import static java.lang.System.setProperty;
 
 @ExtendWith(SeleniumExtension.class)
 @DisplayName("Registration page tests")
 public class RegistrationPageTest {
+
+    private String userName;
     private RegistrationPage registrationPage;
     private MainPage mainPage;
     private OverviewPage overviewPage;
@@ -36,16 +36,16 @@ public class RegistrationPageTest {
         registrationPage = new RegistrationPage(driver);
         driver.get("https://exitget.com");
         mainPage.clickTopImageRegisterButton();
-        registrationPage.register(getUserName(), getUserName() + "@gmai.com", "20exitget18");
+        registrationPage.register(getUserName(), userName + "@gmai.com", "20exitget18");
         overviewPage = new OverviewPage(driver);
-        Assertions.assertEquals(getUserName(), overviewPage.getUserNameString(), "FAULT - We are not on the Overview page");
+        Assertions.assertEquals(userName, overviewPage.getUserNameString(), "FAULT - We are not on the Overview page");
 }
 
 public String getUserName(){
     DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
     Date today = Calendar.getInstance().getTime();
     String dat = df.format(today);
-    return "tester" + dat;
+    return userName = "tester" + dat;
 }
 }
 
