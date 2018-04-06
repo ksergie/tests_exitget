@@ -75,7 +75,7 @@ public class QuickStartGuidePageTest {
         Assertions.assertEquals("1 rules configred", quickStartGuidePage.getTriggerTypeHeader(), "FAULT - We are not on the Triggers form");
 
         quickStartGuidePage.clickTriggetTypeNextButton();
-        Assertions.assertEquals("Final step: Confirm installation1", quickStartGuidePage.getConfirmInstallationHeader(), "FAULT - We are not on the Confirm installation form");
+        Assertions.assertEquals("Final step: Confirm installation", quickStartGuidePage.getConfirmInstallationHeader(), "FAULT - We are not on the Confirm installation form");
 
 
     }
