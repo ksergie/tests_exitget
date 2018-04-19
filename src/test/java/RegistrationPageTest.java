@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import static java.lang.System.getProperty;
 import static java.lang.System.setProperty;
 
 @ExtendWith(SeleniumExtension.class)
