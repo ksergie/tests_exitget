@@ -24,7 +24,7 @@ public class OverviewPage {
     }
 
     public String getUserNameString() {
-        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(userNameString)).getText());
+        return trim((new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(userNameString)).getText());
     }
 
     public void clickQuickstartItem(){

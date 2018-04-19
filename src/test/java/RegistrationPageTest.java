@@ -35,7 +35,7 @@ public class RegistrationPageTest {
         driver.get("https://exitget.com");
         mainPage.clickTopImageRegisterButton();
         Assertions.assertEquals("Registration", registrationPage.getHeader(), "FAULT - We are not on the Registration page");
-        registrationPage.register(getUserName(), userName + "@gmai.com", "20exitget18");
+        registrationPage.register(getUserName(), userName + "@exitget.com", "20exitget18");
         overviewPage = new OverviewPage(driver);
         Assertions.assertEquals(userName, overviewPage.getUserNameString(), "FAULT - We are not on the Overview page");
 }
@@ -44,7 +44,7 @@ public String getUserName(){
     DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
     Date today = Calendar.getInstance().getTime();
     String dat = df.format(today);
-    return userName = "tester" + dat;
+    return userName = "tester647382" + dat;
 }
 
 }

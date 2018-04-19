@@ -20,7 +20,7 @@ public class RegistrationPage {
     private By registerButton = By.xpath("//button[@origtext='Register']");
 
     public String getHeader(){
-        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+        return trim((new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
     }
 
     private RegistrationPage inputName(String userName){
