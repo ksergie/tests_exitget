@@ -15,10 +15,10 @@ public class MainPageTest {
 
     private MainPage mainPage;
 
-//    @BeforeAll
-//    static void setUp() {
-//        setProperty("wdm.edgeVersion", "3.14393");
-//    }
+    @BeforeAll
+    static void setUp() {
+        setProperty("wdm.edgeVersion", "3.14393");
+    }
 
     @TestTemplate
     @Video(name = "Main page. Test theme preview images")
