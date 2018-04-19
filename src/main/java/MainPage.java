@@ -35,10 +35,10 @@ public class MainPage {
             s = s.substring(6);
             String xpath = "//img[@src='" + s + "']";
             driver.findElement(By.xpath(xpath)).click();
-            pause(700);
+            pause(1000);
             (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(closeButton));
             actions.click().build().perform();
-            pause(700);
+            pause(1000);
             (new WebDriverWait(driver, 10)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
 
         }
