@@ -1,5 +1,6 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
+import io.github.bonigarcia.SeleniumJupiter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -16,8 +17,8 @@ public class MainPageTest {
     private MainPage mainPage;
 
     @BeforeAll
-    static void setUp() {
-        setProperty("wdm.edgeVersion", "3.14393");
+    static void setup() {
+        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
     }
 
     @TestTemplate

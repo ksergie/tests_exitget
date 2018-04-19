@@ -1,5 +1,6 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
+import io.github.bonigarcia.SeleniumJupiter;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.Alert;
@@ -19,8 +20,8 @@ public class QuickStartGuidePageTest {
     private AlertPage alertPage;
 
     @BeforeAll
-    static void setUp() {
-        setProperty("wdm.edgeVersion", "3.14393");
+    static void setup() {
+        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
     }
 
     @TestTemplate
