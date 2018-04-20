@@ -1,12 +1,9 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
-import io.github.bonigarcia.SeleniumJupiter;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
-import static java.lang.System.setProperty;
 
 @ExtendWith(SeleniumExtension.class)
 @DisplayName("QuickStartGuide page test")
@@ -18,11 +15,6 @@ public class QuickStartGuidePageTest {
     private QuickStartGuidePage quickStartGuidePage;
     private AccountPage accountPage;
     private AlertPage alertPage;
-
-    @BeforeAll
-    static void setup() {
-        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
-    }
 
     @TestTemplate
     @Video(name = "QuickStartGuide page. Test")

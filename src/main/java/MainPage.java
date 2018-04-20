@@ -16,7 +16,7 @@ public class MainPage {
     }
 
     private By headerLoginButton = By.id("headerLogin");
-    private By topImageRegisterButton = By.id("topImageRegister");
+    private By topImageRegisterButton = By.xpath("//button[@id='topImageRegister']");
     private By templateTheme = By.className("themePreviewImage");
     private By closeButton = By.id("exitget_ad_controls");
 
@@ -48,7 +48,7 @@ public class MainPage {
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(headerLoginButton)).click();
     }
     public void clickTopImageRegisterButton(){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.elementToBeClickable(topImageRegisterButton)).click();
     }
 
     private void pause(int msec){
