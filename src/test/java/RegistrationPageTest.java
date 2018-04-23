@@ -4,6 +4,7 @@ import io.github.bonigarcia.SeleniumJupiter;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,10 +23,10 @@ public class RegistrationPageTest {
 
 
     @BeforeAll
-    static void setup() {
+    static void setup(EdgeDriver driver) {
         SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
     }
-    
+
     @TestTemplate
     @Video(name = "Registration page. Registration with correct data")
     @DisplayName("Registration page. Registration with correct data")

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 
 @ExtendWith(SeleniumExtension.class)
@@ -15,7 +16,7 @@ public class MainPageTest {
     private MainPage mainPage;
 
     @BeforeAll
-    static void setup() {
+    static void setup(EdgeDriver driver) {
         SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
     }
 

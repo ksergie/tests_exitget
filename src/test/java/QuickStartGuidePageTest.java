@@ -4,6 +4,7 @@ import io.github.bonigarcia.SeleniumJupiter;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 
 @ExtendWith(SeleniumExtension.class)
@@ -18,7 +19,7 @@ public class QuickStartGuidePageTest {
     private AlertPage alertPage;
 
     @BeforeAll
-    static void setup() {
+    static void setup(EdgeDriver driver) {
         SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
     }
 
