@@ -1,5 +1,7 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
+import io.github.bonigarcia.SeleniumJupiter;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,6 +13,11 @@ import org.openqa.selenium.WebDriver;
 public class MainPageTest {
 
     private MainPage mainPage;
+
+    @BeforeAll
+    static void setup() {
+        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
+    }
 
     @TestTemplate
     @Video(name = "Main page. Test theme preview images")

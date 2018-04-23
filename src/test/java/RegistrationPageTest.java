@@ -1,5 +1,6 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
+import io.github.bonigarcia.SeleniumJupiter;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,11 @@ public class RegistrationPageTest {
     private OverviewPage overviewPage;
 
 
+    @BeforeAll
+    static void setup() {
+        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
+    }
+    
     @TestTemplate
     @Video(name = "Registration page. Registration with correct data")
     @DisplayName("Registration page. Registration with correct data")
