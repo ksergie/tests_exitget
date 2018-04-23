@@ -15,10 +15,6 @@ public class MainPageTest {
 
     private MainPage mainPage;
 
-    @BeforeAll
-    static void setup(EdgeDriver driver) {
-        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
-    }
 
     @TestTemplate
     @Video(name = "Main page. Test theme preview images")

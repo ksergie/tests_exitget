@@ -15,10 +15,6 @@ public class LoginPageTest {
     private LoginPage loginPage;
     private OverviewPage overviewPage;
 
-    @BeforeAll
-    static void setup(EdgeDriver driver) {
-        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
-    }
 
     @TestTemplate
     @Video(name = "Login page. Login with correct data")

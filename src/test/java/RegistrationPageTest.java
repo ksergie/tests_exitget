@@ -22,10 +22,6 @@ public class RegistrationPageTest {
     private OverviewPage overviewPage;
 
 
-    @BeforeAll
-    static void setup(EdgeDriver driver) {
-        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
-    }
 
     @TestTemplate
     @Video(name = "Registration page. Registration with correct data")

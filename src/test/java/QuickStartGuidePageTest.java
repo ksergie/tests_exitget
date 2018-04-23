@@ -18,10 +18,6 @@ public class QuickStartGuidePageTest {
     private AccountPage accountPage;
     private AlertPage alertPage;
 
-    @BeforeAll
-    static void setup(EdgeDriver driver) {
-        SeleniumJupiter.config().wdm().setDriverVersion("3.14393");
-    }
 
     @TestTemplate
     @Video(name = "QuickStartGuide page. Test")
