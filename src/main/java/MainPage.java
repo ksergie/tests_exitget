@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainPage {
     private WebDriver driver;
@@ -19,12 +21,32 @@ public class MainPage {
     private By topImageRegisterButton = By.xpath("//button[@id='topImageRegister']");
     private By templateTheme = By.className("themePreviewImage");
     private By closeButton = By.id("exitget_ad_controls");
+    private By footerLinks = By.xpath("//div[@id='footerLinks2']/a");
+    private By footerLinks1 = By.xpath("//div[@id='footerLinks1']/a");
 
 
     private List<WebElement> themeLinks = new ArrayList<>();
     private List<String> src = new ArrayList<>();
 
+    private String[] titles = {"How to Create a Campaign - Exitget Blog",
+            "About Us - Exitget",
+            "Exitget Help Center",
+            "Contact - Exitget",
+            "Exitget. A Popup Platform for Everyone",
+            "Terms of Service - Exitget",
+            "Privacy Policy - Exitget",
+            "Exitget.com (@exitgetcom) | Twitter",
+            "Exitget - Home | Facebook"};
+
+    private int i = 0;
+
     public void clickLinks(){
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        themeLinks.clear();
+        src.clear();
+
         Actions actions = new Actions(driver);
 
         List<WebElement> themeLinks = driver.findElements(templateTheme);
@@ -41,6 +63,39 @@ public class MainPage {
             pause(1000);
             (new WebDriverWait(driver, 10)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
 
+        }
+    }
+
+    public void clickFooterlinks(){
+
+        themeLinks.clear();
+        src.clear();
+
+        List<WebElement> themeLinks = driver.findElements(footerLinks);
+        for (WebElement link : themeLinks) {
+            src.add(link.getAttribute("href"));
+        }
+
+        click();
+
+        src.clear();
+        themeLinks.clear();
+
+        themeLinks = driver.findElements(footerLinks1);
+        for (WebElement link : themeLinks) {
+            src.add(link.getAttribute("href"));
+        }
+
+        i = 4;
+        click();
+    }
+
+    private void click(){
+        for (String s: src){
+            driver.get(s);
+            Assertions.assertEquals(titles[i], driver.getTitle(), "The link is wrong");
+            i++;
+            driver.navigate().back();
         }
     }
 

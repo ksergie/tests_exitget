@@ -24,4 +24,13 @@ public class MainPageTest {
         driver.get("https://exitget.com");
         mainPage.clickLinks();
     }
+
+    @TestTemplate
+    @Video(name = "Main page. Test the footers links")
+    @DisplayName("Main page. Test the footers links")
+    void testFooterLinks2(WebDriver driver){
+        mainPage = new MainPage(driver);
+        driver.get("https://exitget.com");
+        mainPage.clickFooterlinks();
+    }
 }
