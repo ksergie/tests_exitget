@@ -28,9 +28,18 @@ public class MainPageTest {
     @TestTemplate
     @Video(name = "Main page. Test the footers links")
     @DisplayName("Main page. Test the footers links")
-    void testFooterLinks2(WebDriver driver){
+    void testFooterLinks(WebDriver driver){
         mainPage = new MainPage(driver);
         driver.get("https://exitget.com");
         mainPage.clickFooterlinks();
+    }
+
+    @TestTemplate
+    @Video(name = "Main page. Test chat buble")
+    @DisplayName("Main page. Test chat buble")
+    void testChatBuble(WebDriver driver){
+        mainPage = new MainPage(driver);
+        driver.get("https://exitget.com");
+        mainPage.clickChatBuble();
     }
 }

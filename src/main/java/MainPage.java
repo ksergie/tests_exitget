@@ -23,6 +23,10 @@ public class MainPage {
     private By closeButton = By.id("exitget_ad_controls");
     private By footerLinks = By.xpath("//div[@id='footerLinks2']/a");
     private By footerLinks1 = By.xpath("//div[@id='footerLinks1']/a");
+    private By chatBuble = By.id("chatClient");
+    private By bubleTitle = By.xpath("//div[@id='chatClientHeader']/div");
+    private By minimizeIcon = By.id("chatClientMinimize");
+    private By cloceIcon = By.id("chatClientClose");
 
 
     private List<WebElement> themeLinks = new ArrayList<>();
@@ -64,6 +68,19 @@ public class MainPage {
             (new WebDriverWait(driver, 20)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
 
         }
+    }
+
+    public void clickChatBuble() {
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(chatBuble)).click();
+        Assertions.assertEquals("Online Support", driver.findElement(bubleTitle).getText(), "It is not a chat window!");
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(minimizeIcon)).click();
+        Assertions.assertTrue((new WebDriverWait(driver, 20)).until(ExpectedConditions.invisibilityOfElementLocated(bubleTitle)),
+                "The chat window is not minimalized");
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(chatBuble)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(cloceIcon)).click();
+        closeAlertWindow();
+        Assertions.assertTrue((new WebDriverWait(driver, 20)).until(ExpectedConditions.invisibilityOfElementLocated(chatBuble)),
+                "The chat window is not closed");
     }
 
     public void clickFooterlinks(){
@@ -112,5 +129,9 @@ public class MainPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private void closeAlertWindow() {
+        driver.switchTo().alert().accept();
     }
 }
