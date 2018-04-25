@@ -42,7 +42,7 @@ public class MainPage {
 
     public void clickLinks(){
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         themeLinks.clear();
         src.clear();
@@ -58,10 +58,10 @@ public class MainPage {
             String xpath = "//img[@src='" + s + "']";
             driver.findElement(By.xpath(xpath)).click();
             pause(1000);
-            (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(closeButton));
+            (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(closeButton));
             actions.click().build().perform();
             pause(1000);
-            (new WebDriverWait(driver, 10)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
+            (new WebDriverWait(driver, 20)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
 
         }
     }
