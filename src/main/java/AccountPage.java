@@ -38,7 +38,7 @@ public class AccountPage {
     }
 
     public String getAccountResultMessage(){
-        return (new WebDriverWait(driver, 50)).until(ExpectedConditions.textToBe(accountResultMessage, "Reset complete")).toString();
+        return (new WebDriverWait(driver, 80)).until(ExpectedConditions.textToBe(accountResultMessage, "Reset complete")).toString();
     }
 
     public void clickCloseButton(){
