@@ -30,6 +30,8 @@ public class MainPage {
     private By cloceIcon = By.id("chatClientClose");
     private By screenshotButtons = By.xpath("//a[starts-with(@class,'screenshotOptions')]");
     private By registerButtons = By.xpath("//button[contains(@class, 'register')]");
+    private By loginButton = By.id("headerLogin");
+    private By signUpLink = By.xpath("//a[text()='Sign up']");
 
     private List<WebElement> themeLinks = new ArrayList<>();
     private List<String> src = new ArrayList<>();
@@ -51,6 +53,18 @@ public class MainPage {
                                 "//exitget.com/static/images/front/screenshots/campaign-settings-validation.png"};
 
     private int i = 0;
+
+    public void clickSignupLink(){
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(signUpLink)).click();
+        Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
+    }
+
+    public void clickLoginButton(){
+        LoginPage loginPage = new LoginPage(driver);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(loginButton)).click();
+        Assertions.assertEquals("Login", loginPage.getHeader(), "We are not on the Login page");
+    }
 
     public void clickRegisterButtons(){
 

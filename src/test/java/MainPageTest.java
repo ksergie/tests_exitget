@@ -55,6 +55,7 @@ public class MainPageTest {
         mainPage.clickScreenshotButton();
     }
 
+//    @Disabled
     @TestTemplate
     @Video(name = "Main page. Test register buttons")
     @DisplayName("Main page. Test register buttons")
@@ -62,5 +63,24 @@ public class MainPageTest {
         mainPage = new MainPage(driver);
         driver.get("https://exitget.com");
         mainPage.clickRegisterButtons();
+    }
+
+//    @Disabled
+    @TestTemplate
+    @Video(name = "Main page. Test login buttons")
+    @DisplayName("Main page. Test login buttons")
+    void testLoginButton(WebDriver driver){
+        mainPage = new MainPage(driver);
+        driver.get("https://exitget.com");
+        mainPage.clickLoginButton();
+    }
+
+    @TestTemplate
+    @Video(name = "Main page. Test SignUp link")
+    @DisplayName("Main page. Test SignUp link")
+    void testSignupLink(WebDriver driver){
+        mainPage = new MainPage(driver);
+        driver.get("https://exitget.com");
+        mainPage.clickSignupLink();
     }
 }
