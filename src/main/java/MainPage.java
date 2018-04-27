@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import static org.assertj.core.api.Assertions.*;
 
 public class MainPage {
     private WebDriver driver;
@@ -27,7 +28,8 @@ public class MainPage {
     private By bubleTitle = By.xpath("//div[@id='chatClientHeader']/div");
     private By minimizeIcon = By.id("chatClientMinimize");
     private By cloceIcon = By.id("chatClientClose");
-
+    private By screenshotButtons = By.xpath("//a[starts-with(@class,'screenshotOptions')]");
+    private By registerButtons = By.xpath("//button[contains(@class, 'register')]");
 
     private List<WebElement> themeLinks = new ArrayList<>();
     private List<String> src = new ArrayList<>();
@@ -42,21 +44,57 @@ public class MainPage {
             "Exitget.com (@exitgetcom) | Twitter",
             "Exitget - Home | Facebook"};
 
+    private String[] srcLinks = {"//exitget.com/static/images/front/screenshots/campaign-settings-trigger-settings.png",
+                                "//exitget.com/static/images/front/screenshots/campaign-settings-exit-intent.png",
+                                "//exitget.com/static/images/front/screenshots/campaign-settings-display-settings.png",
+                                "//exitget.com/static/images/front/screenshots/campaign-settings-animation-position.png",
+                                "//exitget.com/static/images/front/screenshots/campaign-settings-validation.png"};
+
     private int i = 0;
+
+    public void clickRegisterButtons(){
+
+        Actions actions = new Actions(driver);
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+
+        fillArray(registerButtons, "id");
+
+        for(String s: src){
+            String xpath = "//button[@id='" + s + "']";
+            System.out.println("Xpath is " + xpath);
+            (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).click();
+            Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
+            registrationPage.clickCloseIcon();
+            pause(1000);
+        }
+    }
+    public void clickScreenshotButton(){
+
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+        fillArray(screenshotButtons, "path");
+
+        int i = 0;
+        for(String s : src){
+            String xpath = "//a[@path='" + s + "']";
+            (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+            assertThat(driver.findElement(By.xpath(xpath)).getCssValue("background-color").contains("0, 135, 113"));
+            xpath = "//img[@src='" + srcLinks[i] + "']";
+            (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            Assertions.assertTrue(driver.findElement(By.xpath(xpath)).isDisplayed(),
+                    "We click the " + s + " button but " + srcLinks[i] + " image was displayed");
+            i++;
+        }
+    }
 
     public void clickLinks(){
 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-        themeLinks.clear();
-        src.clear();
-
         Actions actions = new Actions(driver);
 
-        List<WebElement> themeLinks = driver.findElements(templateTheme);
-        for (WebElement link : themeLinks) {
-            src.add(link.getAttribute("src"));
-        }
+        fillArray(templateTheme, "src");
+
         for (String s : src) {
             s = s.substring(6);
             String xpath = "//img[@src='" + s + "']";
@@ -85,23 +123,11 @@ public class MainPage {
 
     public void clickFooterlinks(){
 
-        themeLinks.clear();
-        src.clear();
-
-        List<WebElement> themeLinks = driver.findElements(footerLinks);
-        for (WebElement link : themeLinks) {
-            src.add(link.getAttribute("href"));
-        }
+        fillArray(footerLinks, "href");
 
         click();
 
-        src.clear();
-        themeLinks.clear();
-
-        themeLinks = driver.findElements(footerLinks1);
-        for (WebElement link : themeLinks) {
-            src.add(link.getAttribute("href"));
-        }
+        fillArray(footerLinks1, "href");
 
         i = 4;
         click();
@@ -133,5 +159,15 @@ public class MainPage {
 
     private void closeAlertWindow() {
         driver.switchTo().alert().accept();
+    }
+
+    private void fillArray(By wb, String field){
+        themeLinks.clear();
+        src.clear();
+
+        List<WebElement> themeLinks = driver.findElements(wb);
+        for (WebElement link : themeLinks) {
+            src.add(link.getAttribute(field));
+        }
     }
 }

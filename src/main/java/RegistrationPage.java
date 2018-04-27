@@ -18,6 +18,7 @@ public class RegistrationPage {
     private By registerPasswdField = By.id("registerpass");
     private By legalCheckbox = By.id("legalCheckbox");
     private By registerButton = By.xpath("//button[@origtext='Register']");
+    private By closeIcon = By.xpath("//div[@id='register_frame']//img[@class='close']");
 
     public String getHeader(){
         return trim((new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
@@ -46,6 +47,10 @@ public class RegistrationPage {
     private RegistrationPage clickRegisterButton(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerButton)).click();
         return this;
+    }
+
+    public void clickCloseIcon(){
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(closeIcon)).click();
     }
 
     public void register(String username, String email, String passwd){
