@@ -32,6 +32,9 @@ public class MainPage {
     private By registerButtons = By.xpath("//button[contains(@class, 'register')]");
     private By loginButton = By.id("headerLogin");
     private By signUpLink = By.xpath("//a[text()='Sign up']");
+    private By logoLink1 = By.xpath("//div[@id='footerInfo']/a");
+    private By logoLink2 = By.id("logotext");
+
 
     private List<WebElement> themeLinks = new ArrayList<>();
     private List<String> src = new ArrayList<>();
@@ -54,6 +57,16 @@ public class MainPage {
 
     private int i = 0;
 
+    public void clickLogo(){
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(logoLink1)).click();
+        Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
+                    "After clicking the Logo we did not go to main page");
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(logoLink2)).click();
+        Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
+                "After clicking the Logo we did not go to main page");
+    }
+
     public void clickSignupLink(){
         RegistrationPage registrationPage = new RegistrationPage(driver);
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(signUpLink)).click();
@@ -75,7 +88,7 @@ public class MainPage {
 
         for(String s: src){
             String xpath = "//button[@id='" + s + "']";
-            System.out.println("Xpath is " + xpath);
+//            System.out.println("Xpath is " + xpath);
             (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).click();
             Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
             registrationPage.clickCloseIcon();

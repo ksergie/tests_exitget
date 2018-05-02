@@ -1,7 +1,5 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
-import io.github.bonigarcia.SeleniumJupiter;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestTemplate;
@@ -75,6 +73,7 @@ public class MainPageTest {
         mainPage.clickLoginButton();
     }
 
+//    @Disabled
     @TestTemplate
     @Video(name = "Main page. Test SignUp link")
     @DisplayName("Main page. Test SignUp link")
@@ -82,5 +81,14 @@ public class MainPageTest {
         mainPage = new MainPage(driver);
         driver.get("https://exitget.com");
         mainPage.clickSignupLink();
+    }
+
+    @TestTemplate
+    @Video(name = "Main page. Test LOGO links")
+    @DisplayName("Main page. Test LOGO links")
+    void testLogoLinks(WebDriver driver){
+        mainPage = new MainPage(driver);
+        driver.get("https://exitget.com");
+        mainPage.clickLogo();
     }
 }
