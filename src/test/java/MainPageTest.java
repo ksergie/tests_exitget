@@ -1,6 +1,5 @@
 import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +18,6 @@ public class MainPageTest {
     @DisplayName("Main page. Test theme preview images")
     void testPreviewImages(WebDriver driver){
         mainPage = new MainPage(driver);
-        driver.get("https://exitget.com");
         mainPage.clickLinks();
     }
 
@@ -29,7 +27,6 @@ public class MainPageTest {
     @DisplayName("Main page. Test the footers links")
     void testFooterLinks(WebDriver driver){
         mainPage = new MainPage(driver);
-        driver.get("https://exitget.com");
         mainPage.clickFooterlinks();
     }
 
@@ -39,7 +36,6 @@ public class MainPageTest {
     @DisplayName("Main page. Test chat buble")
     void testChatBuble(WebDriver driver){
         mainPage = new MainPage(driver);
-        driver.get("https://exitget.com");
         mainPage.clickChatBuble();
     }
 
@@ -49,7 +45,6 @@ public class MainPageTest {
     @DisplayName("Main page. Test screenshot buttons")
     void testScreenshotButtons(WebDriver driver){
         mainPage = new MainPage(driver);
-        driver.get("https://exitget.com");
         mainPage.clickScreenshotButton();
     }
 
@@ -59,7 +54,6 @@ public class MainPageTest {
     @DisplayName("Main page. Test register buttons")
     void testRegisterButtons(WebDriver driver){
         mainPage = new MainPage(driver);
-        driver.get("https://exitget.com");
         mainPage.clickRegisterButtons();
     }
 
@@ -69,7 +63,6 @@ public class MainPageTest {
     @DisplayName("Main page. Test login buttons")
     void testLoginButton(WebDriver driver){
         mainPage = new MainPage(driver);
-        driver.get("https://exitget.com");
         mainPage.clickLoginButton();
     }
 
@@ -79,7 +72,6 @@ public class MainPageTest {
     @DisplayName("Main page. Test SignUp link")
     void testSignupLink(WebDriver driver){
         mainPage = new MainPage(driver);
-        driver.get("https://exitget.com");
         mainPage.clickSignupLink();
     }
 
@@ -88,7 +80,6 @@ public class MainPageTest {
     @DisplayName("Main page. Test LOGO links")
     void testLogoLinks(WebDriver driver){
         mainPage = new MainPage(driver);
-        driver.get("https://exitget.com");
         mainPage.clickLogo();
     }
 }

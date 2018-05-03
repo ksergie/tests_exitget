@@ -3,6 +3,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 import static jdk.nashorn.internal.objects.NativeString.trim;
 
 public class RegistrationPage {
@@ -21,7 +23,8 @@ public class RegistrationPage {
     private By closeIcon = By.xpath("//div[@id='register_frame']//img[@class='close']");
 
     public String getHeader(){
-        return trim((new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
     }
 
     private RegistrationPage inputName(String userName){

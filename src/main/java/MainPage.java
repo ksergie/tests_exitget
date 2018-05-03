@@ -31,9 +31,11 @@ public class MainPage {
     private By screenshotButtons = By.xpath("//a[starts-with(@class,'screenshotOptions')]");
     private By registerButtons = By.xpath("//button[contains(@class, 'register')]");
     private By loginButton = By.id("headerLogin");
-    private By signUpLink = By.xpath("//a[text()='Sign up']");
+    private By signUpLink = By.xpath("//div[@id='footerLinks1']/a");
     private By logoLink1 = By.xpath("//div[@id='footerInfo']/a");
     private By logoLink2 = By.id("logotext");
+
+    private static String url = "https://exitget.com";
 
 
     private List<WebElement> themeLinks = new ArrayList<>();
@@ -59,6 +61,7 @@ public class MainPage {
 
     public void clickLogo(){
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.get(url);
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(logoLink1)).click();
         Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
                     "After clicking the Logo we did not go to main page");
@@ -68,13 +71,16 @@ public class MainPage {
     }
 
     public void clickSignupLink(){
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         RegistrationPage registrationPage = new RegistrationPage(driver);
+        driver.get(url);
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(signUpLink)).click();
         Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
     }
 
     public void clickLoginButton(){
         LoginPage loginPage = new LoginPage(driver);
+        driver.get(url);
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(loginButton)).click();
         Assertions.assertEquals("Login", loginPage.getHeader(), "We are not on the Login page");
     }
@@ -83,6 +89,8 @@ public class MainPage {
 
         Actions actions = new Actions(driver);
         RegistrationPage registrationPage = new RegistrationPage(driver);
+
+        driver.get(url);
 
         fillArray(registerButtons, "id");
 
@@ -98,6 +106,8 @@ public class MainPage {
     public void clickScreenshotButton(){
 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+        driver.get(url);
 
         fillArray(screenshotButtons, "path");
 
@@ -120,6 +130,8 @@ public class MainPage {
 
         Actions actions = new Actions(driver);
 
+        driver.get(url);
+
         fillArray(templateTheme, "src");
 
         for (String s : src) {
@@ -136,6 +148,7 @@ public class MainPage {
     }
 
     public void clickChatBuble() {
+        driver.get(url);
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(chatBuble)).click();
         Assertions.assertEquals("Online Support", driver.findElement(bubleTitle).getText(), "It is not a chat window!");
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(minimizeIcon)).click();
@@ -149,6 +162,8 @@ public class MainPage {
     }
 
     public void clickFooterlinks(){
+
+        driver.get(url);
 
         fillArray(footerLinks, "href");
 
@@ -165,6 +180,7 @@ public class MainPage {
             driver.get(s);
             Assertions.assertEquals(titles[i], driver.getTitle(), "The link is wrong");
             i++;
+            pause(300);
             driver.navigate().back();
         }
     }
