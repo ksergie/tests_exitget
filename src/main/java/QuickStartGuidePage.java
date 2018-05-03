@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,67 +39,108 @@ public class QuickStartGuidePage {
         return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(headerPage)).getText());
     }
 
-    public QuickStartGuidePage setInslallUrl(){
+    private QuickStartGuidePage setInslallUrl(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(installUrlField)).sendKeys(targetSiteUrl);
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(installUrlNextButton)).click();
         return this;
     }
 
-    public String getDevModeFormHeader() {
+    private String getDevModeFormHeader() {
         return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(devModeFormHeader)).getText();
     }
 
-    public QuickStartGuidePage setDevMode(){
+    private QuickStartGuidePage setDevMode(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(devModeSwitch)).click();
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(devModeFormNextButton)).click();
         return this;
     }
 
-    public String getChooseImageFormHeader(){
+    private String getChooseImageFormHeader(){
         return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(chooseImageFormHeader)).getText();
     }
 
-    public QuickStartGuidePage setTemplate(){
+    private QuickStartGuidePage setTemplate(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(filterAdvertisementsSelector)).click();
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(redirectOnlyOption)).click();
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(template)).click();
         return this;
     }
 
-    public String getcustomizeDesignFormHeader(){
+    private String getcustomizeDesignFormHeader(){
         return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(customizeDesignHeader)).getText();
     }
 
-    public QuickStartGuidePage clickPreviewButton(){
+    private QuickStartGuidePage clickPreviewButton(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(previewButton)).click();
         return this;
     }
 
-    public QuickStartGuidePage clickNextButton(){
+    private QuickStartGuidePage clickNextButton(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(nextButton)).click();
         return this;
     }
 
-    public String getInputRedirectionUrlHeader(){
+    private String getInputRedirectionUrlHeader(){
         return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(inputRedirectionUrlHeader)).getText();
     }
 
-    public QuickStartGuidePage inputRedirectionUrl(){
+    private QuickStartGuidePage inputRedirectionUrl(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(redirectionUrlField)).sendKeys("https://exitget.com");
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(redirectUrlNextButton)).click();
         return this;
     }
 
-    public String getTriggerTypeHeader(){
+    private String getTriggerTypeHeader(){
         return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(triggerTypeHeader)).getText();
     }
 
-    public QuickStartGuidePage clickTriggetTypeNextButton(){
+    private QuickStartGuidePage clickTriggetTypeNextButton(){
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(triggerTypeNextButton)).click();
         return this;
     }
 
-    public String getConfirmInstallationHeader(){
+    private String getConfirmInstallationHeader(){
         return (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(confirmInstallationHeader)).getText();
+    }
+
+    public void quickStartGuide(){
+        MainPage mainPage = new MainPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        OverviewPage overviewPage = new OverviewPage(driver);
+        AccountPage accountPage = new AccountPage(driver);
+        AlertPage alertPage = new AlertPage(driver);
+
+        driver.get("https://exitget.com");
+        mainPage.clickHeaderLoginButton();
+        loginPage.login("exitgetest@gmail.com", "20exitget17");
+        overviewPage.clickAccountButton();
+        Assertions.assertEquals("a12f41728769c1", accountPage.getHeaderPage(), "FAULT - We are not on the Account page");
+        // Reset Account
+        accountPage.inputCurrentPassword();
+        accountPage.clickResetAccountButton();
+        accountPage.closeAlertWindow();
+        Assertions.assertEquals("true", accountPage.getAccountResultMessage(), "FAULT - Reset account is not done");
+        accountPage.clickCloseButton();
+        Assertions.assertEquals("VISITATIONS", overviewPage.getHeader(), "FAULT - We are not on the Overview page");
+        overviewPage.clickQuickstartItem();
+        Assertions.assertEquals("Enter the installation URL", getHeader(), "FAULT - We are not on the QuickStart page");
+        setInslallUrl();
+        Assertions.assertEquals("Development mode", getDevModeFormHeader(), "FAULT - We are not on the Development Mode form");
+        setDevMode();
+        Assertions.assertEquals("Choose the advertisement background", getChooseImageFormHeader(), "FAULT - We are not on the Choose background form");
+        setTemplate();
+        Assertions.assertEquals("Profesional Design Customization", getcustomizeDesignFormHeader(),
+                "FAULT - We are not on the Profesional Design Customization form");
+        clickPreviewButton();
+        Assertions.assertTrue(alertPage.isVisible(), "The Alert window is not appear after pressing the Preview button");
+        alertPage.clickOkButton();
+        clickNextButton();
+        Assertions.assertEquals("Enter the redirection URL", getInputRedirectionUrlHeader(),
+                "FAULT - We are not on the redirection URL form");
+        inputRedirectionUrl();
+        Assertions.assertEquals("1 rules configred", getTriggerTypeHeader(), "FAULT - We are not on the Triggers form");
+        clickTriggetTypeNextButton();
+        Assertions.assertEquals("Final step: Confirm installation", getConfirmInstallationHeader(),
+                "FAULT - We are not on the Confirm installation form");
     }
 }

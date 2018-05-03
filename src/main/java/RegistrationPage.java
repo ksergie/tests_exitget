@@ -1,8 +1,13 @@
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import static jdk.nashorn.internal.objects.NativeString.trim;
@@ -21,6 +26,8 @@ public class RegistrationPage {
     private By legalCheckbox = By.id("legalCheckbox");
     private By registerButton = By.xpath("//button[@origtext='Register']");
     private By closeIcon = By.xpath("//div[@id='register_frame']//img[@class='close']");
+    static private String url = "https://exitget.com";
+    private String userName;
 
     public String getHeader(){
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -56,11 +63,29 @@ public class RegistrationPage {
         (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(closeIcon)).click();
     }
 
-    public void register(String username, String email, String passwd){
+    private void register(String username, String email, String passwd){
         inputName(username);
         inputEMail(email);
         inputPassword(passwd);
         tickCheckBox();
         clickRegisterButton();
+    }
+
+    public void registerWithCorrectData(){
+        MainPage mainPage = new MainPage(driver);
+        OverviewPage overviewPage = new OverviewPage(driver);
+
+        driver.get(url);
+        mainPage.clickTopImageRegisterButton();
+        Assertions.assertEquals("Registration", getHeader(), "FAULT - We are not on the Registration page");
+        register(getUserName(), userName + "@exitget.com", "20exitget18");
+        Assertions.assertEquals(userName, overviewPage.getUserNameString(), "FAULT - We are not on the Overview page");
+    }
+
+    private String getUserName(){
+        DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+        Date today = Calendar.getInstance().getTime();
+        String dat = df.format(today);
+        return userName = "tester647382" + dat;
     }
 }
