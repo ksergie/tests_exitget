@@ -195,7 +195,7 @@ public class MainPage {
         (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(headerLoginButton)).click();
     }
     public void clickTopImageRegisterButton(){
-        (new WebDriverWait(driver, 15)).until(ExpectedConditions.elementToBeClickable(topImageRegisterButton)).click();
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
     }
 
     private void pause(int msec){
