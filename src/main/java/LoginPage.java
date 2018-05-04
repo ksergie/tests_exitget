@@ -32,28 +32,34 @@ public class LoginPage {
     };
 
     public String getHeader(){
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+        return trim(driver.findElement(header).getText());
     }
 
     private LoginPage inputEmail(String email){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(fieldEmail)).sendKeys(email);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(fieldEmail)).sendKeys(email);
+        driver.findElement(fieldEmail).sendKeys(email);
         return this;
     }
 
     private LoginPage inputPassword(String passwd){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(fieldPassword)).sendKeys(passwd);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(fieldPassword).sendKeys(passwd);
         return this;
     }
 
     public void login(String email, String passwd){
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         inputEmail(email);
         inputPassword(passwd);
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(buttonLogin)).submit();
+//        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(buttonLogin)).submit();
+        driver.findElement(buttonLogin).submit();
     }
 
     public String getTooltip() {
-        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(toolTip)).getText());
+        return trim((new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(toolTip)).getText());
     }
 
     public void loginWithIncorrectData(){

@@ -193,12 +193,10 @@ public class MainPage {
     }
 
     public void clickHeaderLoginButton() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(headerLoginButton).click();
+        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(headerLoginButton)).click();
     }
     public void clickTopImageRegisterButton(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
+//        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
         driver.findElement(topImageRegisterButton).click();
     }
 
