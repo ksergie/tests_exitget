@@ -145,7 +145,7 @@ public class MainPage {
             driver.findElement(closeButton);
             actions.click().build().perform();
             pause(1000);
-            (new WebDriverWait(driver, 10)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
+            (new WebDriverWait(driver, 15)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
         }
     }
 
