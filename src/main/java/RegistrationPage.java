@@ -30,37 +30,48 @@ public class RegistrationPage {
     private String userName;
 
     public String getHeader(){
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
+        return trim((new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
     }
 
     private RegistrationPage inputName(String userName){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerNameField)).sendKeys(userName);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerNameField)).sendKeys(userName);
+        driver.findElement(registerNameField).sendKeys(userName);
         return this;
     }
 
     private RegistrationPage inputEMail(String email){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registereMailField)).sendKeys(email);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registereMailField)).sendKeys(email);
+        driver.findElement(registereMailField).sendKeys(email);
         return this;
     }
 
     private RegistrationPage inputPassword(String passwd){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerPasswdField)).sendKeys(passwd);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerPasswdField)).sendKeys(passwd);
+        driver.findElement(registerPasswdField).sendKeys(passwd);
         return this;
     }
 
     private RegistrationPage tickCheckBox() {
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(legalCheckbox)).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(legalCheckbox)).click();
+        driver.findElement(legalCheckbox).click();
         return this;
     }
 
     private RegistrationPage clickRegisterButton(){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerButton)).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(registerButton)).click();
+        driver.findElement(registerButton).click();
         return this;
     }
 
     public void clickCloseIcon(){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(closeIcon)).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(closeIcon)).click();
+        driver.findElement(closeIcon).click();
     }
 
     private void register(String username, String email, String passwd){
