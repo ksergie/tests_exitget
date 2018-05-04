@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class MainPage {
@@ -59,35 +60,38 @@ public class MainPage {
 
     private int i = 0;
 
+
+
     public void clickLogo(){
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(url);
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(logoLink1)).click();
+        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(logoLink1)).click();
         Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
                     "After clicking the Logo we did not go to main page");
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(logoLink2)).click();
+        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(logoLink2)).click();
         Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
                 "After clicking the Logo we did not go to main page");
     }
 
     public void clickSignupLink(){
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         RegistrationPage registrationPage = new RegistrationPage(driver);
         driver.get(url);
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(signUpLink)).click();
+        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(signUpLink)).click();
         Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
     }
 
     public void clickLoginButton(){
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         LoginPage loginPage = new LoginPage(driver);
         driver.get(url);
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(loginButton)).click();
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton)).click();
+        driver.findElement(loginButton).click();
         Assertions.assertEquals("Login", loginPage.getHeader(), "We are not on the Login page");
     }
 
     public void clickRegisterButtons(){
-
-        Actions actions = new Actions(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         RegistrationPage registrationPage = new RegistrationPage(driver);
 
         driver.get(url);
@@ -96,17 +100,15 @@ public class MainPage {
 
         for(String s: src){
             String xpath = "//button[@id='" + s + "']";
-//            System.out.println("Xpath is " + xpath);
-            (new WebDriverWait(driver, 20)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).click();
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+            driver.findElement(By.xpath(xpath)).click();
             Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
             registrationPage.clickCloseIcon();
             pause(1000);
         }
     }
     public void clickScreenshotButton(){
-
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(url);
 
         fillArray(screenshotButtons, "path");
@@ -114,19 +116,20 @@ public class MainPage {
         int i = 0;
         for(String s : src){
             String xpath = "//a[@path='" + s + "']";
-            (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+            driver.findElement(By.xpath(xpath)).click();
             assertThat(driver.findElement(By.xpath(xpath)).getCssValue("background-color").contains("0, 135, 113"));
             xpath = "//img[@src='" + srcLinks[i] + "']";
-            (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-            Assertions.assertTrue(driver.findElement(By.xpath(xpath)).isDisplayed(),
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            driver.findElement(By.xpath(xpath));
+            Assertions.assertTrue((new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).isDisplayed(),
                     "We click the " + s + " button but " + srcLinks[i] + " image was displayed");
             i++;
         }
     }
 
     public void clickLinks(){
-
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         Actions actions = new Actions(driver);
 
@@ -139,25 +142,29 @@ public class MainPage {
             String xpath = "//img[@src='" + s + "']";
             driver.findElement(By.xpath(xpath)).click();
             pause(1000);
-            (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(closeButton));
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(closeButton));
+            driver.findElement(closeButton);
             actions.click().build().perform();
             pause(1000);
-            (new WebDriverWait(driver, 20)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
-
+            (new WebDriverWait(driver, 5)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
         }
     }
 
     public void clickChatBuble() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(url);
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(chatBuble)).click();
+        driver.findElement(chatBuble).click();
         Assertions.assertEquals("Online Support", driver.findElement(bubleTitle).getText(), "It is not a chat window!");
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(minimizeIcon)).click();
-        Assertions.assertTrue((new WebDriverWait(driver, 20)).until(ExpectedConditions.invisibilityOfElementLocated(bubleTitle)),
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(minimizeIcon)).click();
+        driver.findElement(minimizeIcon).click();
+        Assertions.assertTrue((new WebDriverWait(driver, 5)).until(ExpectedConditions.invisibilityOfElementLocated(bubleTitle)),
                 "The chat window is not minimalized");
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(chatBuble)).click();
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(cloceIcon)).click();
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(chatBuble)).click();
+        driver.findElement(chatBuble).click();
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(cloceIcon)).click();
+        driver.findElement(cloceIcon).click();
         closeAlertWindow();
-        Assertions.assertTrue((new WebDriverWait(driver, 20)).until(ExpectedConditions.invisibilityOfElementLocated(chatBuble)),
+        Assertions.assertTrue((new WebDriverWait(driver, 5)).until(ExpectedConditions.invisibilityOfElementLocated(chatBuble)),
                 "The chat window is not closed");
     }
 
@@ -186,11 +193,13 @@ public class MainPage {
     }
 
     public void clickHeaderLoginButton() {
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(headerLoginButton)).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(headerLoginButton).click();
     }
     public void clickTopImageRegisterButton(){
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
+        driver.findElement(topImageRegisterButton).click();
     }
 
     private void pause(int msec){
