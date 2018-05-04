@@ -63,12 +63,11 @@ public class MainPage {
 
 
     public void clickLogo(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(url);
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(logoLink1)).click();
+        (new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(logoLink1)).click();
         Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
                     "After clicking the Logo we did not go to main page");
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(logoLink2)).click();
+        (new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(logoLink2)).click();
         Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
                 "After clicking the Logo we did not go to main page");
     }
