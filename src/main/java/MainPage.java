@@ -73,10 +73,10 @@ public class MainPage {
     }
 
     public void clickSignupLink(){
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        pause(300);
         RegistrationPage registrationPage = new RegistrationPage(driver);
         driver.get(url);
-        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(signUpLink)).click();
+        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(signUpLink)).click();
         Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
     }
 
@@ -195,10 +195,14 @@ public class MainPage {
         (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(headerLoginButton)).click();
     }
     public void clickTopImageRegisterButton(){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
+        pause(500);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        (new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
+        driver.findElement(topImageRegisterButton).click();
+
     }
 
-    private void pause(int msec){
+    public void pause(int msec){
         try {
             Thread.sleep(msec);
         } catch (InterruptedException e) {
