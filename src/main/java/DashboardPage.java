@@ -33,7 +33,10 @@ public class DashboardPage {
     private By itemDesignList = By.xpath("//a[text()='Designs List']");
     private By markerDesignList = By.xpath("//a[@title='Design name']");
     private By itemCampaigns = By.xpath("//a[text()='Campaigns']");
-
+    private By itemLeads = By.xpath("//a[text()='Leads']");
+    private By markerLeads = By.xpath("(//div[@id='contentPlace']//div[@class='col name'])[2]");
+    private By itemArchivedLeads = By.xpath("//a[text()='Archived Leads']");
+    private By itemNewLeads = By.xpath("//a[text()='New Leads']");
 
     public void clickMenuItems(){
         LoginPage loginPage = new LoginPage(driver);
@@ -87,5 +90,20 @@ public class DashboardPage {
         mainPage.pause(500);
         actual = trim((new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(markerDesignList)).getText());
         Assertions.assertEquals("Design", actual, "We are not on the Design List page");
+
+        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(itemLeads)).click();
+        mainPage.pause(500);
+        actual = trim((new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(markerLeads)).getText());
+        Assertions.assertEquals("Email", actual, "The Leads item is not pressed");
+
+        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(itemArchivedLeads)).click();
+        mainPage.pause(500);
+        actual = trim((new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(markerLeads)).getText());
+        Assertions.assertEquals("Email", actual, "We are not on the Archived Leads page");
+
+        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(itemNewLeads)).click();
+        mainPage.pause(500);
+        actual = trim((new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(markerLeads)).getText());
+        Assertions.assertEquals("Email", actual, "We are not on the New Leads page");
     }
 }
