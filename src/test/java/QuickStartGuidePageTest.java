@@ -1,4 +1,3 @@
-import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,8 +8,8 @@ import org.openqa.selenium.WebDriver;
 @DisplayName("QuickStartGuide page test")
 public class QuickStartGuidePageTest {
     @TestTemplate
-    @Video(name = "QuickStartGuide page. Test")
-    @DisplayName("QuickStartGuide page. Test")
+//    @Video(name = "QuickStartGuide page. Test")
+//    @DisplayName("QuickStartGuide page. Test")
     void testQuickStartGuide(WebDriver driver){
         QuickStartGuidePage quickStartGuidePage = new QuickStartGuidePage(driver);
         quickStartGuidePage.quickStartGuide();

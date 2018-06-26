@@ -1,4 +1,3 @@
-import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestTemplate;
@@ -10,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 public class DashboardTest {
     @TestTemplate
 //    @Video(name = "Dashboard page. Click the menu items")
-    @DisplayName("Dashboard page. Click the menu items")
+//    @DisplayName("Dashboard page. Click the menu items")
     void testMenuItems(WebDriver driver){
         DashboardPage dashboardPage = new DashboardPage(driver);
         dashboardPage.clickMenuItems();

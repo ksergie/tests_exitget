@@ -1,4 +1,3 @@
-import com.automation.remarks.junit5.Video;
 import io.github.bonigarcia.SeleniumExtension;
 import org.junit.Before;
 import org.junit.jupiter.api.*;
@@ -13,16 +12,16 @@ import java.util.concurrent.TimeUnit;
 public class LoginPageTest {
 
     @TestTemplate
-    @Video(name = "Login page. Login with correct data")
-    @DisplayName("Login page. Login with correct data")
+//    @Video(name = "Login page. Login with correct data")
+//    @DisplayName("Login page. Login with correct data")
     void testLoginWithCorrectData(WebDriver driver){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginWithCorrectData();
     }
 
     @TestTemplate
-    @Video(name = "Login page. Login with incorrect data")
-    @DisplayName("Login page. Login with incorrect data")
+//    @Video(name = "Login page. Login with incorrect data")
+//    @DisplayName("Login page. Login with incorrect data")
     void testLoginWithIncorrectData(WebDriver driver) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginWithIncorrectData();

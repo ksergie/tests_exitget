@@ -26,9 +26,9 @@ public class LoginPage {
     private String[][] data = {
             {"", "", "You must provide the email address you registered with.", "Login without data - Tooltip is not correspond the user's input"},
             {"exitgetest@gmail.com", "", "You must provide a password to login.", "Login without password - Tooltip is not correspond the user's input"},
-            {"123qwer", "20exitget17", "You must provide a valid email address.", "Login with incorrect email - Tooltip is not correspond the user's input"},
+            {"123qwer", "Ckfdfnhele_1", "You must provide a valid email address.", "Login with incorrect email - Tooltip is not correspond the user's input"},
             {"exitgetest@gmail.com", "20exitget20", "The login information you provided was not correct.", "Login with incorrect password - Tooltip is not correspond the user's input"},
-            {"exitgetest999999@gmail.com", "20exitget17", "The login information you provided was not correct.", "Login with unregistered email - Tooltip is not correspond the user's input"}
+            {"exitgetest999999@gmail.com", "Ckfdfnhele_1", "The login information you provided was not correct.", "Login with unregistered email - Tooltip is not correspond the user's input"}
     };
 
     public String getHeader(){
@@ -78,7 +78,7 @@ public class LoginPage {
 
         driver.get(url);
         mainPage.clickHeaderLoginButton();
-        login("exitgetest@gmail.com", "20exitget17");
+        login("exitgetest@gmail.com", "Ckfdfnhele_1");
         Assertions.assertEquals("VISITATIONS", overviewPage.getHeader(),
                 "Login with correct data - We are not on the Overview page");
     }
