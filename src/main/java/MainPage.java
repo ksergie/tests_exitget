@@ -77,7 +77,7 @@ public class MainPage {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         driver.get(url);
         (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(signUpLink)).click();
-        Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
+//        Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
     }
 
     public void clickLoginButton(){
@@ -101,8 +101,8 @@ public class MainPage {
             String xpath = "//button[@id='" + s + "']";
 //            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
             driver.findElement(By.xpath(xpath)).click();
-            Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
-            registrationPage.clickCloseIcon();
+//            Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
+//            registrationPage.clickCloseIcon();
             pause(1000);
         }
     }

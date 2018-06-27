@@ -8,12 +8,9 @@ import org.openqa.selenium.WebDriver;
 @DisplayName("Registration page tests")
 public class RegistrationPageTest {
     @TestTemplate
-//    @Video(name = "Registration page. Registration with correct data")
-//    @DisplayName("Registration page. Registration with correct data")
-    void testRegisterWithCorrectData(WebDriver driver){
+    void testClickMonthlyButton(WebDriver driver){
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.registerWithCorrectData();
+        registrationPage.clickMonthlyButton();
     }
-
 }
 
