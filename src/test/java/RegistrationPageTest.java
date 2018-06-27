@@ -12,5 +12,15 @@ public class RegistrationPageTest {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.clickMonthlyButton();
     }
+    @TestTemplate
+    void testClickYearlyButton(WebDriver driver){
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.clickYearlyButton();
+    }
+    @TestTemplate
+    void testClickSelectPlanButton(WebDriver driver){
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.clickSelectPlanButton();
+    }
 }
 

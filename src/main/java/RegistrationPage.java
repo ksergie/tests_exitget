@@ -1,7 +1,5 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.*;
@@ -14,20 +12,52 @@ public class RegistrationPage {
     }
 
     private By buttonMonthly = By.xpath("//div[@class='myMonthly']");
-    private By monthlyProPlan = By.xpath("(//div[@class='damount'])[1]");
-    private By monthlyBusinessPlan = By.xpath("(//div[@class='damount'])[2]");
-    private By monthlyEnterPrizePlan = By.xpath("(//div[@class='damount'])[3]");
+    private By ProPlan = By.xpath("(//div[@class='damount'])[1]");
+    private By BusinessPlan = By.xpath("(//div[@class='damount'])[2]");
+    private By EnterPrisePlan = By.xpath("(//div[@class='damount'])[3]");
+    private By buttonYearly = By.xpath("//div[@class='myYearly']");
+    private By getStarted = By.xpath("//h3");
+
+
     private static String url = "https://exitget.com/pricing";
 
     public RegistrationPage clickMonthlyButton(){
         MainPage mainPage = new MainPage(driver);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(url);
         driver.findElement(buttonMonthly).click();
         mainPage.pause(300);
-        assertThat(driver.findElement(monthlyProPlan).getText()).isEqualTo("123");
-        assertThat(driver.findElement(monthlyBusinessPlan).getText()).isEqualTo("498");
-        assertThat(driver.findElement(monthlyEnterPrizePlan).getText()).isEqualTo("1248+");
+        assertThat(driver.findElement(ProPlan).getText()).isEqualTo("123");
+        assertThat(driver.findElement(BusinessPlan).getText()).isEqualTo("498");
+        assertThat(driver.findElement(EnterPrisePlan).getText()).isEqualTo("1248+");
+        return this;
+    }
+
+    public RegistrationPage clickYearlyButton(){
+        MainPage mainPage = new MainPage(driver);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.get(url);
+        driver.findElement(buttonMonthly).click();
+        mainPage.pause(300);
+        driver.findElement(buttonYearly).click();
+        mainPage.pause(300);
+        assertThat(driver.findElement(ProPlan).getText()).isEqualTo("99");
+        assertThat(driver.findElement(BusinessPlan).getText()).isEqualTo("399");
+        assertThat(driver.findElement(EnterPrisePlan).getText()).isEqualTo("999+");
+        return this;
+    }
+
+    public RegistrationPage clickSelectPlanButton(){
+        MainPage mainPage = new MainPage(driver);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.get(url);
+        for (int i = 1; i < 4; i++){
+            String xpath = "(//a[text()='SELECT PLAN'])[" + i + "]";
+            driver.findElement(By.xpath(xpath)).click();
+            mainPage.pause(1000);
+            assertThat(driver.findElement(getStarted).getText()).isEqualTo("Let's get started");
+            driver.navigate().back();
+        }
         return this;
     }
 
