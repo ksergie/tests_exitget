@@ -122,7 +122,7 @@ public class QuickStartGuidePage {
 
         driver.get("https://exitget.com");
         mainPage.clickHeaderLoginButton();
-        loginPage.login("exitgetest@gmail.com", "20exitget17");
+        loginPage.login("exitgetest@gmail.com", "Ckfdfnhele_1");
         overviewPage.clickAccountButton();
         Assertions.assertEquals("a12f41728769c1", accountPage.getHeaderPage(), "FAULT - We are not on the Account page");
         // Reset Account

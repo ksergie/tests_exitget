@@ -1,4 +1,5 @@
 import io.github.bonigarcia.SeleniumExtension;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +12,7 @@ public class MainPageTest {
 
     private MainPage mainPage;
 
-//    @Disabled
+    @Disabled
     @TestTemplate
 //    @Video(name = "Main page. Test theme preview images")
 //    @DisplayName("Main page. Test theme preview images")
@@ -47,7 +48,7 @@ public class MainPageTest {
         mainPage.clickScreenshotButton();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
 //    @Video(name = "Main page. Test register buttons")
 //    @DisplayName("Main page. Test register buttons")

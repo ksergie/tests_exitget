@@ -23,7 +23,7 @@ public class AccountPage {
     }
 
     public AccountPage inputCurrentPassword(){
-        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(inputCurrentPasswordField)).sendKeys("20exitget17");
+        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(inputCurrentPasswordField)).sendKeys("Ckfdfnhele_1");
         return this;
     }
 
