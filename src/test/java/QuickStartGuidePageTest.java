@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 @ExtendWith(SeleniumExtension.class)
 @DisplayName("QuickStartGuide page test")
 public class QuickStartGuidePageTest {
+    @Disabled
     @TestTemplate
 //    @Video(name = "QuickStartGuide page. Test")
 //    @DisplayName("QuickStartGuide page. Test")

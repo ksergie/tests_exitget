@@ -7,24 +7,25 @@ import org.openqa.selenium.WebDriver;
 @ExtendWith(SeleniumExtension.class)
 @DisplayName("Registration page tests")
 public class RegistrationPageTest {
+    @Disabled
     @TestTemplate
     void testRegistration(WebDriver driver){
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.RegistrationForms();
     }
-//    @Disabled
+    @Disabled
     @TestTemplate
     void testClickMonthlyButton(WebDriver driver){
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.clickMonthlyButton();
     }
-//    @Disabled
+    @Disabled
     @TestTemplate
     void testClickYearlyButton(WebDriver driver){
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.clickYearlyButton();
     }
-//    @Disabled
+    @Disabled
     @TestTemplate
     void testClickSelectPlanButton(WebDriver driver){
         RegistrationPage registrationPage = new RegistrationPage(driver);

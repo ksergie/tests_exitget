@@ -19,7 +19,7 @@ public class MainPage {
         this.driver = driver;
     }
 
-    private By headerLoginButton = By.id("headerLogin");
+    private By headerLoginButton = By.xpath("//div[@id='screenMenu']/a[1]");
     private By topImageRegisterButton = By.xpath("//button[@id='topImageRegister']");
     private By templateTheme = By.className("themePreviewImage");
     private By closeButton = By.id("exitget_ad_controls");
@@ -82,6 +82,7 @@ public class MainPage {
 
     public void clickLoginButton(){
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         LoginPage loginPage = new LoginPage(driver);
         driver.get(url);
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton)).click();

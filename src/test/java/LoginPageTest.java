@@ -19,11 +19,12 @@ public class LoginPageTest {
         loginPage.loginWithCorrectData();
     }
 
-    @TestTemplate
-//    @Video(name = "Login page. Login with incorrect data")
-//    @DisplayName("Login page. Login with incorrect data")
-    void testLoginWithIncorrectData(WebDriver driver) {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginWithIncorrectData();
-    }
+//    @Disabled
+//    @TestTemplate
+////    @Video(name = "Login page. Login with incorrect data")
+////    @DisplayName("Login page. Login with incorrect data")
+//    void testLoginWithIncorrectData(WebDriver driver) {
+//        LoginPage loginPage = new LoginPage(driver);
+//        loginPage.loginWithIncorrectData();
+//    }
 }

@@ -21,7 +21,7 @@ public class MainPageTest {
         mainPage.clickLinks();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
 //    @Video(name = "Main page. Test the footers links")
 //    @DisplayName("Main page. Test the footers links")
@@ -30,7 +30,7 @@ public class MainPageTest {
         mainPage.clickFooterlinks();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
 //    @Video(name = "Main page. Test chat buble")
 //    @DisplayName("Main page. Test chat buble")
@@ -39,7 +39,7 @@ public class MainPageTest {
         mainPage.clickChatBuble();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
 //    @Video(name = "Main page. Test screenshot buttons")
 //    @DisplayName("Main page. Test screenshot buttons")
@@ -57,7 +57,7 @@ public class MainPageTest {
         mainPage.clickRegisterButtons();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
 //    @Video(name = "Main page. Test login buttons")
 //    @DisplayName("Main page. Test login buttons")
@@ -66,7 +66,7 @@ public class MainPageTest {
         mainPage.clickLoginButton();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
 //    @Video(name = "Main page. Test SignUp link")
 //    @DisplayName("Main page. Test SignUp link")
@@ -75,6 +75,7 @@ public class MainPageTest {
         mainPage.clickSignupLink();
     }
 
+    @Disabled
     @TestTemplate
 //    @Video(name = "Main page. Test LOGO links")
 //    @DisplayName("Main page. Test LOGO links")

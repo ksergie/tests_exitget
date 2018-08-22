@@ -11,13 +11,14 @@ import static jdk.nashorn.internal.objects.NativeString.trim;
 public class LoginPage {
     private WebDriver driver;
 
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    private By fieldEmail = By.id("login_email");
-    private By fieldPassword = By.id("login_password");
-    private By buttonLogin = By.xpath("//button[@origtext='Login']");
+    private By fieldEmail = By.id("userInput");
+    private By fieldPassword = By.id("passwordInput");
+    private By buttonLogin = By.id("sendInput");
     private By toolTip = By.xpath("//div[@id='login_frame']//div[@class='_logicstatus']");
     private By header = By.xpath("//div[@id='login_frame']//div[@class='contentlabel font_size_by_height']");
     private static String url = "https://exitget.com";
@@ -32,12 +33,14 @@ public class LoginPage {
     };
 
     public String getHeader(){
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //        return trim((new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(header)).getText());
         return trim(driver.findElement(header).getText());
     }
 
     private LoginPage inputEmail(String email){
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //        (new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(fieldEmail)).sendKeys(email);
         driver.findElement(fieldEmail).sendKeys(email);
@@ -45,12 +48,14 @@ public class LoginPage {
     }
 
     private LoginPage inputPassword(String passwd){
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(fieldPassword).sendKeys(passwd);
         return this;
     }
 
     public void login(String email, String passwd){
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         inputEmail(email);
         inputPassword(passwd);
@@ -62,16 +67,17 @@ public class LoginPage {
         return trim((new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(toolTip)).getText());
     }
 
-    public void loginWithIncorrectData(){
-        MainPage mainPage = new MainPage(driver);
+//    public void loginWithIncorrectData(){
+//        MainPage mainPage = new MainPage(driver);
+//
+//        for(int i = 0; i < 5; i++){
+//            driver.get(url);
+//            mainPage.clickHeaderLoginButton();
+//            login(data[i][0], data[i][1]);
+//            Assertions.assertEquals(data[i][2], this.getTooltip(), data[i][3]);
+//        }
+//    }
 
-        for(int i = 0; i < 5; i++){
-            driver.get(url);
-            mainPage.clickHeaderLoginButton();
-            login(data[i][0], data[i][1]);
-            Assertions.assertEquals(data[i][2], this.getTooltip(), data[i][3]);
-        }
-    }
     public void loginWithCorrectData(){
         MainPage mainPage = new MainPage(driver);
         OverviewPage overviewPage = new OverviewPage(driver);
