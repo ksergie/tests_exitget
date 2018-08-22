@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 @ExtendWith(SeleniumExtension.class)
 @DisplayName("Login page test")
-public class LoginPageTest {
+public class LoginPageTests {
 
     @TestTemplate
 //    @Video(name = "Login page. Login with correct data")

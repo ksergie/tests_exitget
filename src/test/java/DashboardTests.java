@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 @ExtendWith(SeleniumExtension.class)
 @DisplayName("Dashboard page test")
-public class DashboardTest {
+public class DashboardTests {
     @Disabled
     @TestTemplate
 //    @Video(name = "Dashboard page. Click the menu items")

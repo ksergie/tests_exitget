@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 @ExtendWith(SeleniumExtension.class)
 @DisplayName("Registration page tests")
-public class RegistrationPageTest {
+public class RegistrationPageTests {
     @Disabled
     @TestTemplate
     void testRegistration(WebDriver driver){

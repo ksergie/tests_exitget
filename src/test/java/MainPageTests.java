@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 @ExtendWith(SeleniumExtension.class)
 @DisplayName("Main page test")
-public class MainPageTest {
+public class MainPageTests {
 
     private MainPage mainPage;
 
