@@ -2,15 +2,12 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Assertions.*;
 
 public class MainPage {
     private WebDriver driver;
@@ -19,209 +16,84 @@ public class MainPage {
         this.driver = driver;
     }
 
-    private By headerLoginButton = By.xpath("//div[@id='screenMenu']/a[1]");
-    private By topImageRegisterButton = By.xpath("//button[@id='topImageRegister']");
-    private By templateTheme = By.className("themePreviewImage");
-    private By closeButton = By.id("exitget_ad_controls");
-    private By footerLinks = By.xpath("//div[@id='footerLinks2']/a");
-    private By footerLinks1 = By.xpath("//div[@id='footerLinks1']/a");
-    private By chatBuble = By.id("chatClient");
-    private By bubleTitle = By.xpath("//div[@id='chatClientHeader']/div");
-    private By minimizeIcon = By.id("chatClientMinimize");
-    private By cloceIcon = By.id("chatClientClose");
-    private By screenshotButtons = By.xpath("//a[starts-with(@class,'screenshotOptions')]");
-    private By registerButtons = By.xpath("//button[contains(@class, 'register')]");
-    private By loginButton = By.id("headerLogin");
-    private By signUpLink = By.xpath("//div[@id='footerLinks1']/a");
-    private By logoLink1 = By.xpath("//div[@id='footerInfo']/a");
-    private By logoLink2 = By.id("logotext");
+    private By linksMainMenu = By.xpath("//div[@id='menuLinks']/a[@class='menuLink']");
+    private By titleExitgetBlog = By.xpath("//div[@class='blogMenuRecent']/h3");
+    private By buttonHeaderLogin = By.xpath("//div[@id='screenMenu']/a[1]");
+    private By buttonSignUp = By.xpath("(//a[text()='SIGN UP'])[2]");
+    private By buttonGetStarted1 = By.xpath("//a[@class='button green']");
+    private By buttonGetStarted2 = By.xpath("(//a[text()='GET STARTED'])[2]");
+    private By logoExitGet = By.id("logotext");
 
     private static String url = "https://exitget.com";
 
-
-    private List<WebElement> themeLinks = new ArrayList<>();
-    private List<String> src = new ArrayList<>();
-
-    private String[] titles = {"How to Create a Campaign - Exitget Blog",
-            "About Us - Exitget",
-            "Exitget Help Center",
-            "Contact - Exitget",
-            "Exitget. A Popup Platform for Everyone",
-            "Terms of Service - Exitget",
-            "Privacy Policy - Exitget",
-            "Exitget.com (@exitgetcom) | Twitter",
-            "Exitget - Home | Facebook"};
-
-    private String[] srcLinks = {"//exitget.com/static/images/front/screenshots/campaign-settings-trigger-settings.png",
-                                "//exitget.com/static/images/front/screenshots/campaign-settings-exit-intent.png",
-                                "//exitget.com/static/images/front/screenshots/campaign-settings-display-settings.png",
-                                "//exitget.com/static/images/front/screenshots/campaign-settings-animation-position.png",
-                                "//exitget.com/static/images/front/screenshots/campaign-settings-validation.png"};
-
-    private int i = 0;
-
-
-
-    public void clickLogo(){
-        driver.get(url);
-        (new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(logoLink1)).click();
-        Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
-                    "After clicking the Logo we did not go to main page");
-        (new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(logoLink2)).click();
-        Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(),
-                "After clicking the Logo we did not go to main page");
+    public void clickHeaderLoginButton(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(buttonHeaderLogin)).click();
+        wait.until(ExpectedConditions.titleIs("Login - Exitget"));
+        Assertions.assertEquals("Login - Exitget", driver.getTitle(), "We are not on Login Page");
     }
 
-    public void clickSignupLink(){
-        pause(300);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
-        driver.get(url);
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(signUpLink)).click();
-//        Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
-    }
+    public void checkMainMenuLinks(){
 
-    public void clickLoginButton(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        LoginPage loginPage = new LoginPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+
+        // Titles of pages for checking
+        String[] titlesOfPages = {
+                "About Us - Exitget",
+                "Exitget Blog",
+                "Exitget Help Center",
+                "Pricing - Exitget"
+        };
+
+        // List of Href's
+        List<String> hrefs = new ArrayList<>();
+
         driver.get(url);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton)).click();
-        driver.findElement(loginButton).click();
-        Assertions.assertEquals("Login", loginPage.getHeader(), "We are not on the Login page");
-    }
-
-    public void clickRegisterButtons(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        RegistrationPage registrationPage = new RegistrationPage(driver);
-
-        driver.get(url);
-
-        fillArray(registerButtons, "id");
-
-        for(String s: src){
-            String xpath = "//button[@id='" + s + "']";
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
-            driver.findElement(By.xpath(xpath)).click();
-//            Assertions.assertEquals("Registration", registrationPage.getHeader(), "We are not on the Registration page");
-//            registrationPage.clickCloseIcon();
-            pause(1000);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(linksMainMenu));
+        // List of Menu links
+        List<WebElement>menuLinks = driver.findElements(linksMainMenu);
+        // Fill out href's array
+        for (WebElement link: menuLinks) {
+            hrefs.add(link.getAttribute("href"));
         }
-    }
-    public void clickScreenshotButton(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(url);
-
-        fillArray(screenshotButtons, "path");
-
+        // go around the pages
         int i = 0;
-        for(String s : src){
-            String xpath = "//a[@path='" + s + "']";
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
-            driver.findElement(By.xpath(xpath)).click();
-            assertThat(driver.findElement(By.xpath(xpath)).getCssValue("background-color").contains("0, 135, 113"));
-            xpath = "//img[@src='" + srcLinks[i] + "']";
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-            driver.findElement(By.xpath(xpath));
-            Assertions.assertTrue((new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).isDisplayed(),
-                    "We click the " + s + " button but " + srcLinks[i] + " image was displayed");
+        for (String href : hrefs) {
+            driver.get(href);
+            if (i != 1){
+                wait.until(ExpectedConditions.titleIs(titlesOfPages[i]));
+                String errorMessage = "We are not on the " + titlesOfPages[i] + " page";
+                Assertions.assertEquals(titlesOfPages[i], driver.getTitle(), errorMessage);
+            } else {
+                String titleEgetBlog = wait.until(ExpectedConditions.visibilityOfElementLocated(titleExitgetBlog)).getText();
+                Assertions.assertEquals(titlesOfPages[i], titleEgetBlog, "We are not on the ExitGet Blog page");
+            }
             i++;
-        }
-    }
-
-    public void clickLinks(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        Actions actions = new Actions(driver);
-
-        driver.get(url);
-
-        fillArray(templateTheme, "src");
-
-        for (String s : src) {
-            s = s.substring(6);
-            String xpath = "//img[@src='" + s + "']";
-            driver.findElement(By.xpath(xpath)).click();
-            pause(1000);
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(closeButton));
-            driver.findElement(closeButton);
-            actions.click().build().perform();
-            pause(1000);
-            (new WebDriverWait(driver, 15)).until(ExpectedConditions.invisibilityOfElementLocated(closeButton));
-        }
-    }
-
-    public void clickChatBuble() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(url);
-        driver.findElement(chatBuble).click();
-        Assertions.assertEquals("Online Support", driver.findElement(bubleTitle).getText(), "It is not a chat window!");
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(minimizeIcon)).click();
-        driver.findElement(minimizeIcon).click();
-        Assertions.assertTrue((new WebDriverWait(driver, 5)).until(ExpectedConditions.invisibilityOfElementLocated(bubleTitle)),
-                "The chat window is not minimalized");
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(chatBuble)).click();
-        driver.findElement(chatBuble).click();
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(cloceIcon)).click();
-        driver.findElement(cloceIcon).click();
-        closeAlertWindow();
-        Assertions.assertTrue((new WebDriverWait(driver, 5)).until(ExpectedConditions.invisibilityOfElementLocated(chatBuble)),
-                "The chat window is not closed");
-    }
-
-    public void clickFooterlinks(){
-
-        driver.get(url);
-
-        fillArray(footerLinks, "href");
-
-        click();
-
-        fillArray(footerLinks1, "href");
-
-        i = 4;
-        click();
-    }
-
-    private void click(){
-        for (String s: src){
-            driver.get(s);
-            Assertions.assertEquals(titles[i], driver.getTitle(), "The link is wrong");
-            i++;
-            pause(300);
             driver.navigate().back();
         }
     }
 
-    public void clickHeaderLoginButton() {
-        (new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(headerLoginButton)).click();
-    }
-    public void clickTopImageRegisterButton(){
-        pause(500);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-//        (new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(topImageRegisterButton)).click();
-        driver.findElement(topImageRegisterButton).click();
-
+    public void clickSignUpButtons(){
+        driver.manage().window().maximize();
+        driver.get(url);
+        clickSignUpButton(buttonSignUp);
+        clickSignUpButton(buttonGetStarted1);
+        clickSignUpButton(buttonGetStarted2);
     }
 
-    public void pause(int msec){
-        try {
-            Thread.sleep(msec);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    private void clickSignUpButton(By xpath){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(xpath)).click();
+        Assertions.assertEquals("Signup for Exitget", driver.getTitle(), "We are not on the SignUp for Exitget Page");
+        driver.navigate().back();
     }
 
-    private void closeAlertWindow() {
-        driver.switchTo().alert().accept();
-    }
-
-    private void fillArray(By wb, String field){
-        themeLinks.clear();
-        src.clear();
-
-        List<WebElement> themeLinks = driver.findElements(wb);
-        for (WebElement link : themeLinks) {
-            src.add(link.getAttribute(field));
-        }
+    public void clickLogoExitGet(){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        driver.manage().window().maximize();
+        driver.get(url);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(logoExitGet)).click();
+        Assertions.assertEquals("Exitget. A Popup Platform for Everyone", driver.getTitle(), "Main Page. Test ExitGet Logo is failure");
     }
 }

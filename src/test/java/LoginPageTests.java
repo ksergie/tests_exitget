@@ -1,10 +1,8 @@
 import io.github.bonigarcia.SeleniumExtension;
-import org.junit.Before;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
 
 
 @ExtendWith(SeleniumExtension.class)
@@ -12,19 +10,30 @@ import java.util.concurrent.TimeUnit;
 public class LoginPageTests {
 
     @TestTemplate
-//    @Video(name = "Login page. Login with correct data")
-//    @DisplayName("Login page. Login with correct data")
+    @DisplayName("Login page. Login with correct data")
     void testLoginWithCorrectData(WebDriver driver){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginWithCorrectData();
     }
 
-//    @Disabled
-//    @TestTemplate
-////    @Video(name = "Login page. Login with incorrect data")
-////    @DisplayName("Login page. Login with incorrect data")
-//    void testLoginWithIncorrectData(WebDriver driver) {
-//        LoginPage loginPage = new LoginPage(driver);
-//        loginPage.loginWithIncorrectData();
-//    }
+    @TestTemplate
+    @DisplayName("Login page. Check Need Help? link")
+    void testNeedHelpLink(WebDriver driver){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.checkNeedHelpLink();
+    }
+
+    @TestTemplate
+    @DisplayName("Login page. Check Forgot Password? link")
+    void testForgotPasswordLink(WebDriver driver){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.checkForgotPasswordLink();
+    }
+
+    @TestTemplate
+    @DisplayName("Login page. Check Create a New One link")
+    void testCreateNewOneLink(WebDriver driver){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.checkCreateNewOneLink();
+    }
 }
