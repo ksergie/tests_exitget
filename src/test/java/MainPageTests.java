@@ -14,6 +14,14 @@ public class MainPageTests {
 
 //    @Disabled
     @TestTemplate
+    @DisplayName("Main page. Test the footer menu items")
+    void testFooterMenuItems(WebDriver driver){
+        mainPage = new MainPage(driver);
+        mainPage.checkFooterLinks();
+    }
+
+//    @Disabled
+    @TestTemplate
     @DisplayName("Main page. Test the Main menu items")
     void testMainMenuItems(WebDriver driver){
         mainPage = new MainPage(driver);
@@ -28,10 +36,27 @@ public class MainPageTests {
         mainPage.clickSignUpButtons();
     }
 
+//    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the ExitGet Logo")
     void testExitGetLogo(WebDriver driver){
         mainPage = new MainPage(driver);
         mainPage.clickLogoExitGet();
+    }
+
+//    @Disabled
+    @TestTemplate
+    @DisplayName("Main page. Test the Continue Reading button and View All link")
+    void testBlogButtonAndLink(WebDriver driver){
+        mainPage = new MainPage(driver);
+        mainPage.checkButtonAndLink();
+    }
+
+    //    @Disabled
+    @TestTemplate
+    @DisplayName("Main page. Test the Chat Client")
+    void testChatClient(WebDriver driver){
+        mainPage = new MainPage(driver);
+        mainPage.checkChatClient();
     }
 }
