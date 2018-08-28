@@ -1,16 +1,15 @@
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-//TODO: add chat client
-//TODO: check Complete Popup Management
 //TODO: preview button
 
 public class MainPage {
@@ -37,26 +36,131 @@ public class MainPage {
     private By buttonMinimizeChatClient = By.id("chatClientMinimize");
     private By newmsgChatClient = By.id("chatClientNewMessages");
     private By textareaChatClient = By.id("chatClientText");
+    private By chatClientContent = By.id("chatClientContent");
+    private By chatClientClose = By.id("chatClientClose");
+    private By buttonPreviewPromo = By.id("previewPromo");
+    private By promoPopupWindow = By.id("exitget_controls");
+    private By iconClosePopup = By.id("exitget_close");
+    private By buttonEmailMarketing = By.id("previewLeads");
+    private By buttonExitIntent = By.id("previewExit");
+    private By linkBlogsLinks = By.xpath("//div[@id='linkList']/a[@class='link']");
+    private By linkContent = By.xpath("//div[@class='linkContent']");
 
     private static String url = "https://exitget.com";
 
     // List of Href's
     List<String> hrefs = new ArrayList<>();
 
+    public void checkBlogLink(){
+        Map<String, String> links = new HashMap<>();
+        driver.manage().window().maximize();
+        driver.get(url);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(linkBlogsLinks));
+        List<WebElement>blogLinks = driver.findElements(linkBlogsLinks);
+        for (WebElement link: blogLinks) {
+            links.put(link.getAttribute("href"), link.findElement(linkContent).getText());
+        }
+        
+    }
+
+    public void checkPreviewPopup(){
+        driver.manage().window().maximize();
+        driver.get(url);
+        checkPromotionalOffersButton();
+        checkEmailMarketingButton();
+        checkExitIntent();
+    }
+
+    private void checkExitIntent(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(buttonExitIntent)).click();
+        moveCoursor(500, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(promoPopupWindow));
+        wait.until(ExpectedConditions.elementToBeClickable(iconClosePopup)).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(promoPopupWindow));
+        Assertions.assertEquals(true, wait.until(ExpectedConditions.invisibilityOfElementLocated(promoPopupWindow)),
+                "The Exit Intent Popup window is not closed after moving mouse out the page");
+        moveCoursor(250, 250);
+    }
+
+    private void moveCoursor(int x, int y){
+        try {
+            Robot robot = new Robot();
+            robot.delay(100);
+            robot.mouseMove(x, y);
+
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void checkEmailMarketingButton(){
+        Actions actions = new Actions(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(buttonEmailMarketing)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(promoPopupWindow));
+        actions.click().build().perform();
+        Assertions.assertEquals(true, wait.until(ExpectedConditions.invisibilityOfElementLocated(promoPopupWindow)),
+                "The Email Marketing Popup window is not closed after clicking Preview Popup button");
+    }
+    private void checkPromotionalOffersButton(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(buttonPreviewPromo)).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(promoPopupWindow));
+        wait.until(ExpectedConditions.elementToBeClickable(iconClosePopup)).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(promoPopupWindow));
+        Assertions.assertEquals(true, wait.until(ExpectedConditions.invisibilityOfElementLocated(promoPopupWindow)),
+                "The Promotions Popup window is not closed after clicking Close icon");
+    }
+    public void checkScreenShotImg(){
+        String[] img = {
+                "campaign-design",
+                "create-design",
+                "websites-hits-overview",
+                "overview-screenshot"
+        };
+        driver.manage().window().maximize();
+        driver.get(url);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        for(int i = 0; i < 4; i++){
+            String xpath = "//a[contains(@class,'button toggle_down') and @item='" + i + "']";
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
+            String xpathImg = "//div[@id='screenshotImages']//img[" + (i + 1) +"]";
+            Assertions.assertEquals("image on", wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathImg))).getAttribute("class"),
+                    "The Class attribute does not equal Image On");
+            Assertions.assertEquals(true, wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathImg))).getAttribute("src").contains(img[i]),
+                    "The wrong image is displayed");
+        }
+
+    }
+
     public void checkChatClient(){
         driver.manage().window().maximize();
         driver.get(url);
         openChatClient();
         minimizeChat();
-//        sendMsgChat();
+        sendMsgChat();
+        closeMsgChat();
     }
 
+
+    private void closeMsgChat(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(chatClientClose)).click();
+        // switch to Alert window and click the OK button
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        Assertions.assertEquals(true, wait.until(ExpectedConditions.invisibilityOfElementLocated(buttonChatClient)), "Chat Client does not close correctly");
+    }
 
     private void sendMsgChat(){
         String testMsg = "Hello Andrew! It is a test message to verify the working of the Chat Client. Sincerely your Automation test";
         openChatClient();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(textareaChatClient)).sendKeys(testMsg + Keys.ENTER);
+        Assertions.assertEquals(true, wait.until(ExpectedConditions.textToBePresentInElement(chatClientContent, testMsg)),
+                "Chat Client does not send the message");
     }
 
     private void minimizeChat(){
@@ -136,7 +240,7 @@ public class MainPage {
     }
 
     private void goAroundFooterLinks(By xpathFooter, String titles[]){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpathFooter));
         // List of Menu links
         List<WebElement>menuLinks = driver.findElements(xpathFooter);
