@@ -5,10 +5,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 //TODO: preview button
 
@@ -52,16 +50,26 @@ public class MainPage {
     List<String> hrefs = new ArrayList<>();
 
     public void checkBlogLink(){
-        Map<String, String> links = new HashMap<>();
+        List<String> content = new ArrayList<>();
         driver.manage().window().maximize();
         driver.get(url);
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(linkBlogsLinks));
         List<WebElement>blogLinks = driver.findElements(linkBlogsLinks);
         for (WebElement link: blogLinks) {
-            links.put(link.getAttribute("href"), link.findElement(linkContent).getText());
+            hrefs.add(link.getAttribute("href"));
         }
-        
+        List<WebElement>contentTitles = driver.findElements(linkContent);
+        for (WebElement title: contentTitles) {
+            content.add(title.getText());
+        }
+        for (int i = 0; i < 7; i++){
+            driver.get(hrefs.get(i));
+            Assertions.assertEquals(content.get(i) + " - Exitget Blog", driver.getTitle(), "We are not on the " + content.get(i) + " page");
+            driver.navigate().back();
+        }
+        hrefs.clear();
+        content.clear();
     }
 
     public void checkPreviewPopup(){
