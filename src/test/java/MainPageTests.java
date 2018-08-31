@@ -83,4 +83,12 @@ public class MainPageTests {
         mainPage = new MainPage(driver);
         mainPage.checkBlogLink();
     }
+
+//    @Disabled
+    @TestTemplate
+    @DisplayName("Main page. Test the header Login button")
+    void testLoginButton(WebDriver driver){
+        mainPage = new MainPage(driver);
+        mainPage.clickHeaderLoginButton();
+    }
 }

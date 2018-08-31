@@ -8,6 +8,8 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
+import static jdk.nashorn.internal.objects.NativeString.trim;
+
 //TODO: preview button
 
 public class MainPage {
@@ -65,7 +67,7 @@ public class MainPage {
         }
         for (int i = 0; i < 7; i++){
             driver.get(hrefs.get(i));
-            Assertions.assertEquals(content.get(i) + " - Exitget Blog", driver.getTitle(), "We are not on the " + content.get(i) + " page");
+            Assertions.assertEquals(trim(content.get(i)) + " - Exitget Blog", driver.getTitle(), "We are not on the " + content.get(i) + " page");
             driver.navigate().back();
         }
         hrefs.clear();
