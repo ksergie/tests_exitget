@@ -283,7 +283,7 @@ public class MainPage {
     }
 
     private void clickSignUpButton(By xpath){
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(xpath)).click();
         wait.until(ExpectedConditions.titleIs("Signup for Exitget"));
         driver.navigate().back();
