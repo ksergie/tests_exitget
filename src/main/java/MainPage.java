@@ -275,7 +275,6 @@ public class MainPage {
 
     public void clickSignUpButtons(){
         driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
         driver.get(url);
         clickSignUpButton(buttonGetStarted1);
         clickSignUpButton(buttonGetStarted2);
