@@ -12,7 +12,7 @@ public class MainPageTests {
 
     private MainPage mainPage;
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the footer menu items")
     void testFooterMenuItems(WebDriver driver){
@@ -36,7 +36,7 @@ public class MainPageTests {
         mainPage.clickSignUpButtons();
     }
 
-    @Disabled
+//    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the ExitGet Logo")
     void testExitGetLogo(WebDriver driver){
