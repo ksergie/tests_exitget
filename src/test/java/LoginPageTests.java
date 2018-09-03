@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 @DisplayName("Login page test")
 public class LoginPageTests {
 
+    @Disabled
     @TestTemplate
     @DisplayName("Login page. Login with correct data")
     void testLoginWithCorrectData(WebDriver driver){
@@ -16,6 +17,7 @@ public class LoginPageTests {
         loginPage.loginWithCorrectData();
     }
 
+    @Disabled
     @TestTemplate
     @DisplayName("Login page. Check Need Help? link")
     void testNeedHelpLink(WebDriver driver){
@@ -23,6 +25,7 @@ public class LoginPageTests {
         loginPage.checkNeedHelpLink();
     }
 
+    @Disabled
     @TestTemplate
     @DisplayName("Login page. Check Forgot Password? link")
     void testForgotPasswordLink(WebDriver driver){
@@ -30,6 +33,7 @@ public class LoginPageTests {
         loginPage.checkForgotPasswordLink();
     }
 
+    @Disabled
     @TestTemplate
     @DisplayName("Login page. Check Create a New One link")
     void testCreateNewOneLink(WebDriver driver){
