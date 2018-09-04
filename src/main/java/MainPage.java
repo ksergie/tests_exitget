@@ -191,7 +191,7 @@ public class MainPage {
 
     public void clickHeaderLoginButton(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(buttonHeaderLogin)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(buttonHeaderLogin)).click();
         wait.until(ExpectedConditions.titleIs("Login - Exitget"));
         Assertions.assertEquals("Login - Exitget", driver.getTitle(), "We are not on Login Page");
     }
