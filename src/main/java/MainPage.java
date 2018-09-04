@@ -21,7 +21,7 @@ public class MainPage {
 
     private By linksMainMenu = By.xpath("//div[@id='menuLinks']/a[@class='menuLink']");
     private By titleExitgetBlog = By.xpath("//div[@class='blogMenuRecent']/h3");
-    private By buttonHeaderLogin = By.xpath("//div[@id='screenMenu']/a[1]");
+    private By buttonHeaderLogin = By.xpath("(//a[text()='LOGIN'])[2]");
     private By buttonSignUp = By.xpath("(//a[text()='SIGN UP'])[2]");
     private By buttonGetStarted1 = By.xpath("(//a[text()='GET STARTED'])[1]");
     private By buttonGetStarted2 = By.xpath("(//a[text()='GET STARTED'])[2]");
