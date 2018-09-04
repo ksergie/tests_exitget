@@ -21,7 +21,7 @@ public class MainPage {
 
     private By linksMainMenu = By.xpath("//div[@id='menuLinks']/a[@class='menuLink']");
     private By titleExitgetBlog = By.xpath("//div[@class='blogMenuRecent']/h3");
-    private By buttonHeaderLogin = By.xpath("(//a[text()='LOGIN'])[2]");
+    private By buttonHeaderLogin = By.xpath("//div[@id='screenMenu']/a[text()='LOGIN']");
     private By buttonSignUp = By.xpath("(//a[text()='SIGN UP'])[2]");
     private By buttonGetStarted1 = By.xpath("(//a[text()='GET STARTED'])[1]");
     private By buttonGetStarted2 = By.xpath("(//a[text()='GET STARTED'])[2]");
@@ -190,7 +190,9 @@ public class MainPage {
     }
 
     public void clickHeaderLoginButton(){
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        driver.manage().window().maximize();
+        driver.get(url);
         wait.until(ExpectedConditions.elementToBeClickable(buttonHeaderLogin)).click();
         wait.until(ExpectedConditions.titleIs("Login - Exitget"));
         Assertions.assertEquals("Login - Exitget", driver.getTitle(), "We are not on Login Page");

@@ -12,7 +12,7 @@ public class MainPageTests {
 
     private MainPage mainPage;
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the footer menu items")
     void testFooterMenuItems(WebDriver driver){
@@ -20,7 +20,7 @@ public class MainPageTests {
         mainPage.checkFooterLinks();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the Main menu items")
     void testMainMenuItems(WebDriver driver){
@@ -28,7 +28,7 @@ public class MainPageTests {
         mainPage.checkMainMenuLinks();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the Sign Up buttons")
     void testSignUpButtons(WebDriver driver){
@@ -36,7 +36,7 @@ public class MainPageTests {
         mainPage.clickSignUpButtons();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the ExitGet Logo")
     void testExitGetLogo(WebDriver driver){
@@ -44,7 +44,7 @@ public class MainPageTests {
         mainPage.clickLogoExitGet();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the Continue Reading button and View All link")
     void testBlogButtonAndLink(WebDriver driver){
@@ -52,7 +52,7 @@ public class MainPageTests {
         mainPage.checkButtonAndLink();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the Chat Client")
     void testChatClient(WebDriver driver){
@@ -60,7 +60,7 @@ public class MainPageTests {
         mainPage.checkChatClient();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the Screenshot Images")
     void testScreenshotMsg(WebDriver driver){
@@ -68,7 +68,7 @@ public class MainPageTests {
         mainPage.checkScreenShotImg();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the Preview Popup buttons")
     void testPreviewPopupButtons(WebDriver driver){
@@ -76,7 +76,7 @@ public class MainPageTests {
         mainPage.checkPreviewPopup();
     }
 
-//    @Disabled
+    @Disabled
     @TestTemplate
     @DisplayName("Main page. Test the Blogs links")
     void testBlogLinks(WebDriver driver){
