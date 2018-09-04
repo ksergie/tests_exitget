@@ -79,7 +79,7 @@ public class MainPage {
         driver.get(url);
         checkPromotionalOffersButton();
         checkEmailMarketingButton();
-        checkExitIntent();
+//        checkExitIntent();
     }
 
     private void checkExitIntent(){
